@@ -1,3 +1,5 @@
+<!-- Header
+================================================== -->
 <header class="transparent sticky-header full-width">
 <div class="container">
 	<div class="sixteen columns">
@@ -12,6 +14,13 @@
 			<ul id="responsive">
 
 				<li><a href="index.html" id="current">Home</a>
+					<ul>
+						<li><a href="index.html">Home #1</a></li>
+						<li><a href="index-2.html">Home #2</a></li>
+						<li><a href="index-3.html">Home #3</a></li>
+						<li><a href="index-4.html">Home #4</a></li>
+						<li><a href="index-5.html">Home #5</a></li>
+					</ul>
 				</li>
 
 				<li><a href="#">Pages</a>
@@ -64,3 +73,4 @@
 	</div>
 </div>
 </header>
+<div class="clearfix"></div>

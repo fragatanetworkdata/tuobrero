@@ -1,9 +1,12 @@
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <title>Work Scout</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/green.css" id="colors">
+
 </head>
 
 <body>
@@ -13,10 +16,10 @@
 	<!-- Header
 	================================================== -->
 	<?php include ('inc/header.php'); ?>
-
-	<div class="clearfix"></div>
 	
 	<?php include ('inc/content.php'); ?>
+	
+	<?php include ('inc/footer.php'); ?>
 
 </div>
 <!-- Scripts
