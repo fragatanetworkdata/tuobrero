@@ -12,9 +12,6 @@
 <body>
 <div id="wrapper">
 
-
-	<!-- Header
-	================================================== -->
 	<?php include ('inc/header.php'); ?>
 	
 	<?php include ('inc/content.php'); ?>
