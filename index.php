@@ -11,6 +11,11 @@
 
 <body>
 <div id="wrapper">
+	<?
+	session_start();
+	?>
+	<?php include ('func/sql.php'); ?>
+	
 
 	<?php include ('inc/header.php'); ?>
 	

@@ -1,5 +1,7 @@
 <!-- Header
 ================================================== -->
+
+
 <header class="sticky-header">
 <div class="container">
 	<div class="sixteen columns">
@@ -25,6 +27,16 @@
 					</ul>
 				</li>
 
+				<?php
+					session_start();
+					$role = isset($_SESSION['role']) ? $_SESSION['role'] : "visitor";
+					// echo $role;
+				
+				?>
+
+				<?php if($role == 1) : ?>
+
+		
 				<li><a href="#">For Candidates</a>
 					<ul>
 						<li><a href="?view=browse-jobs">Browse Jobs</a></li>
@@ -33,6 +45,7 @@
 						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
 					</ul>
 				</li>
+				<?php elseif($role == 0)  : ?>
 
 				<li><a href="#">For Employers</a>
 					<ul>
@@ -42,14 +55,19 @@
 						<li><a href="?view=browse-resumes">Browse Resumes</a></li>
 					</ul>
 				</li>
+				<?php endif; ?>
 
 			</ul>
-
-
+	
+			
 			<ul class="float-right">
+				<?php if(!isset($_SESSION['username'])) : ?>
 				<li><a href="?view=signup"><i class="fa fa-user"></i> Sign Up</a></li>
 				<li><a href="?view=login"><i class="fa fa-lock"></i> Log In</a></li>
-			</ul>
+				<?php else: ?>
+				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Log Out</a></li>
+				<?php endif; ?>
+			</ul>			
 
 		</nav>
 
