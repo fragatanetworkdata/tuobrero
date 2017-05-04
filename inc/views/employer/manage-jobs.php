@@ -37,7 +37,28 @@
                 <th><i class="fa fa-user"></i> Applications</th>
                 <th></th>
             </tr>
+            
+            <?php
+                $user_id = $_SESSION['user_id'];
+                // $query = "Select job_id, title, filled, date_posted, closing_date from j where user_id='$user_id' ";
+                // echo $query;
+                $result = $con->query("Select job_id, title, filled, date_posted, closing_date from jobs where user_id='$user_id' ");
+                while($row = $result->fetch_assoc()) {
 
+                    echo "
+                        <tr>
+                            <td class='title'><a href='#''>".$row['title']."</a></td>
+                            <td class='centered'>-</td>
+                            <td>".$row['date_posted']."</td>
+                            <td>".$row['closing_date']."</td>
+                            <td class='centered'>-</td>
+                            <td class='action'>
+                                <a href='#' class='delete'><i class='fa fa-remove'></i> Delete</a>
+                            </td>
+                        </tr>
+                    ";
+                }
+            ?>
             <!-- Item #1 -->
             <tr>
                 <td class="title"><a href="#">Marketing Coordinator - SEO / SEM Experience <span class="pending">(Pending Approval)</span></a></td>
