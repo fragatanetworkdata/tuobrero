@@ -24,14 +24,16 @@
 <?php
     // session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username=$_POST['username'];
-        $password=$_POST['password'];
+        
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
         $result = $con->query("select * from users where password='$password' AND username='$username'");
         if ($result->num_rows == 1) {
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $_SESSION['username'] = $username; 
-            $_SESSION['role'] = $row['role'];
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role'] = (int) $row['role'];
 
             header("location: index.php"); 
         } else {

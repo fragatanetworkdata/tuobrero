@@ -30,11 +30,10 @@
 				<?php
 					session_start();
 					$role = isset($_SESSION['role']) ? $_SESSION['role'] : "visitor";
-					// echo $role;
-				
+
 				?>
 
-				<?php if($role == 1) : ?>
+				<?php if($role === 0) : ?>
 
 		
 				<li><a href="#">For Candidates</a>
@@ -45,7 +44,7 @@
 						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
 					</ul>
 				</li>
-				<?php elseif($role == 0)  : ?>
+				<?php elseif($role === 1)  : ?>
 
 				<li><a href="#">For Employers</a>
 					<ul>
