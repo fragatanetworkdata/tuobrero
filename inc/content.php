@@ -3,6 +3,7 @@
 	
 	if($temp == 'add-job') 				include("views/employer/add-job.php");
 	else if($temp == 'manage-jobs')  		include("views/employer/manage-jobs.php");
+	else if($temp == 'update-job')  		include("views/employer/update-job.php");
 	else if($temp == 'browse-resumes') 		include("views/employer/browse-resumes.php");
 	else if($temp == 'manage-applications')  include("views/employer/manage-applications.php");
 

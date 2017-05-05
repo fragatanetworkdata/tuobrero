@@ -19,13 +19,13 @@
         $location = $_POST['location'];
         $job_type = $_POST['job_type'];
         $category = $_POST['category'];
-        $description =  mysqli_real_escape_string($con, nl2br($_POST['description']));
+        $description =  mysqli_real_escape_string($con, $_POST['description']);
         $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');;
         $closing_date = $_POST['closing_date'];
         $company = $_POST['company'];
         $url = $_POST['url'];
         $hours = $_POST['hours'];
-        $rate = $_POST['rate'];
+        $rate = mysqli_real_escape_string($con, $_POST['rate']);
         $filled = 0;
 
         // $query = "INSERT INTO jobs (`user_id`, `title`, `location`, `job_type`, `category`, `description`, `date_posted`, `closing_date`, `company`, `url`, `hours`, `rate`, `filled`) VALUES ('$user_id', '$title', '$location', '$job_type', '$category', '$description', '$date_posted', '$closing_date', '$company', '$url', '$hours', '$rate', '$filled') ";
