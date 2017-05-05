@@ -51,9 +51,9 @@
                             <td class='centered'>-</td>
                             <td>".date_format(date_create($row['date_posted']), "M d, Y")."</td>
                             <td>".date_format(date_create($row['closing_date']), "M d, Y")."</td>
-                            <td class='centered'><a href='manage-applications.html' class='button'>Show (0)</a></td>
+                            <td class='centered'><a href='#' class='button'>Show (0)</a></td>
                             <td class='action'>
-                                <a href='#'><i class='fa fa-pencil'></i> Edit</a>
+                                <a href='?view=update-job&job_id=".$row['job_id']."'><i class='fa fa-pencil'></i> Edit</a>
                                 <a href='#'><i class='fa  fa-check'></i> Mark Filled</a>
                                 <a href='#' class='delete'><i class='fa fa-remove'></i> Delete</a>
                             </td>
