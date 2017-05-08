@@ -30,7 +30,7 @@
         $company = $_POST['company'];
         $url = $_POST['url'];
         $hours = $_POST['hours'];
-        $rate = $_POST['rate'];
+        $rate = mysqli_real_escape_string($con, $_POST['rate']);
         $filled = 0;
 
         $query = "UPDATE jobs set user_id = '$user_id', title = '$title', location = '$location', job_type = '$job_type', category = '$category', description = '$description', date_posted = '$date_posted', closing_date = '$closing_date', company = '$company', url = '$url', hours = '$hours', rate = '$rate', filled = '$filled' where job_id='$job_id' ";
