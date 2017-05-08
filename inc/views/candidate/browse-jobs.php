@@ -4,8 +4,7 @@
 <div id="titlebar">
     <div class="container">
         <div class="ten columns">
-            <span>We found 1,412 jobs matching:</span>
-            <h2>Web, Software & IT</h2>
+            <h2>All jobs</h2>
         </div>
 
         <div class="six columns">
@@ -29,9 +28,9 @@
     <div class="eleven columns">
     <div class="padding-right">
         
-        <form action="#" method="get" class="list-search">
+        <form action="?view=search-jobs" method="POST" class="list-search">
             <button><i class="fa fa-search"></i></button>
-            <input type="text" placeholder="job title, keywords or company name" value=""/>
+            <input name="query" type="text" placeholder="job title, keywords or company name" value=""/>
             <div class="clearfix"></div>
         </form>
 
