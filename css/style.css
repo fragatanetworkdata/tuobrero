@@ -4067,6 +4067,22 @@ span.internship {
     background-color: #e1d123;
 }
 
+span.Full-Time {
+    background-color: #186fc8;
+}
+
+span.Part-Time {
+    background-color: #f1630d;
+}
+
+span.Freelance {
+    background-color: #53b427;
+}
+
+span.Internship {
+    background-color: #e1d123;
+}
+
 span.temporary {
     background-color: #e12335;
 }
@@ -7621,3 +7637,4 @@ div.layout-style {
         display: none;
     }
 }
+

@@ -1,18 +1,26 @@
+<?php
+
+    $job_id = $_GET['job_id'];
+    $result = $con->query("SELECT * from jobs where job_id='$job_id'");
+    $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+?>
+
+
 <!-- Titlebar
 ================================================== -->
 <div id="titlebar">
     <div class="container">
         <div class="ten columns">
-            <span><a href="browse-jobs.html">Restaurant / Food Service</a></span>
-            <h2>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h2>
+            <span><a href="browse-jobs.html"><?php echo $job['category'] ?></a></span>
+            <h2><?php echo $job['title'] ?><span class="<?php echo $job['job_type'] ?>"><?php echo $job['job_type'] ?> </span></h2>
         </div>
 
-        <div class="six columns">
-            <a href="#" class="button dark"><i class="fa fa-star"></i> Bookmark This Job</a>
-        </div>
+
 
     </div>
 </div>
+
 
 
 <!-- Content
@@ -25,42 +33,18 @@
 
             <!-- Company Info -->
             <div class="company-info">
-                <img src="images/company-logo.png" alt="">
+                <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1017936-200.png" alt="">
                 <div class="content">
-                    <h4>King LLC</h4>
-                    <span><a href="#"><i class="fa fa-link"></i> Website</a></span>
-                    <span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>
+                    <h4><?php echo $job['company'] ?></h4>
+                    <span><a href="<?php echo $job['url'] ?>"><i class="fa fa-link"></i> Website</a></span>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
 
-            <p class="margin-reset">
-                The Food Service Specialist ensures outstanding customer service is provided to food customers and that all food offerings meet the required stock levels and presentation standards. Beginning your career as a Food Steward will give you a strong foundation in Speedway’s food segment that can make you a vital member of the front line team!
+            <p>
+                <?php echo nl2br($job['description']) ?>
             </p>
-
-            <br>
-            <p>The <strong>Food Service Specialist</strong> will have responsibilities that include:</p>
-
-            <ul class="list-1">
-                <li>Executing the Food Service program, including preparing and presenting our wonderful food offerings
-                    to hungry customers on the go!
-                </li>
-                <li>Greeting customers in a friendly manner and suggestive selling and sampling items to help increase sales.</li>
-                <li>Keeping our Store food area looking terrific and ready for our valued customers by managing product
-                    inventory, stocking, cleaning, etc.</li>
-                <li>We’re looking for associates who enjoy interacting with people and working in a fast-paced environment!</li>
-            </ul>
-
-            <br>
-
-            <h4 class="margin-bottom-10">Job Requirment</h4>
-
-            <ul class="list-1">
-                <li>Excellent customer service skills, communication skills, and a happy, smiling attitude are essential.</li>
-                <li>Must be available to work required shifts including weekends, evenings and holidays.</li>
-                <li>Must be able to perform repeated bending, standing and reaching.</li>
-                <li> Must be able to occasionally lift up to 50 pounds</li>
-            </ul>
 
         </div>
     </div>
@@ -80,28 +64,28 @@
                         <i class="fa fa-map-marker"></i>
                         <div>
                             <strong>Location:</strong>
-                            <span>20180 Outer Dr Dearborn, MI 48124</span>
+                            <span><?php echo $job['location'] ?></span>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-user"></i>
                         <div>
                             <strong>Job Title:</strong>
-                            <span>Food Service Specialist</span>
+                            <span><?php echo $job['title'] ?></span>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-clock-o"></i>
                         <div>
                             <strong>Hours:</strong>
-                            <span>40h / week</span>
+                            <span><?php echo $job['hours'] ?></span>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-money"></i>
                         <div>
                             <strong>Rate:</strong>
-                            <span>$9.50 - $12.50 / hour</span>
+                            <span><?php echo $job['rate'] ?></span>
                         </div>
                     </li>
                 </ul>
