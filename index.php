@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/green.css" id="colors">
+<script src="scripts/jquery-2.1.3.min.js"></script>
 
 </head>
 
@@ -15,18 +16,17 @@
 	session_start();
 	?>
 	<?php include ('func/sql.php'); ?>
-	
+
 
 	<?php include ('inc/header.php'); ?>
-	
+
 	<?php include ('inc/content.php'); ?>
-	
+
 	<?php include ('inc/footer.php'); ?>
 
 </div>
 <!-- Scripts
 ================================================== -->
-<script src="scripts/jquery-2.1.3.min.js"></script>
 <script src="scripts/custom.js"></script>
 <script src="scripts/jquery.superfish.js"></script>
 <script src="scripts/jquery.themepunch.tools.min.js"></script>

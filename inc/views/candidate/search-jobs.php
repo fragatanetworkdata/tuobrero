@@ -19,7 +19,7 @@
 <div id="titlebar">
     <div class="container">
         <div class="ten columns">
-            <h2>We found <?php echo $row_cnt ?> jobs matching</h2>
+            <h2>We found <?php echo $row_cnt ?> <?php echo ($row_cnt==1)?"job":"jobs" ?> matching</h2>
 
         </div>
 

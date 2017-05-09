@@ -21,6 +21,22 @@
 <!-- Content
 ================================================== -->
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $result = $con->query("select username from users where username = '$username'");
+    if(mysqli_num_rows($result)==1) echo "<div align='center'><h3 style='color:red;'>Error! Duplicate user</h3></div>";
+    else {
+        $password = $_POST['password1'];
+        $email = $_POST['email'];
+        $usertype = (int) $_POST['user_type'];
+        $sql = "insert into users (username, password, email, role) values('$username','$password','$email','$usertype') ";
+        $insert = $con->query($sql);
+        if($insert) echo '<div align="center"><h3><span style="color: green;">Signup successfully!</span> Click here to <a href="?view=login">log in</a></h3></div>';
+        else echo '<div align="center" style="color: red;">Something wrong!</div>';
+    }
+}
+?>
 <!-- Container -->
 <div class="container">
 
@@ -57,6 +73,15 @@
                             <i class="ln ln-icon-Lock-2"></i>
                             <input class="input-text" type="password" name="password2" id="password2"/>
                         </label>
+                        <span id="checkPasswordMatch"></span>
+                    </p>
+
+                    <p class="form-row form-row-wide">
+                        <h5>User Type</h5>
+                        <select name="user_type" data-placeholder="Candidate" class="chosen-select-no-single">
+                            <option value="0">Candidate</option>
+                            <option value="1">Employer</option>
+                        </select>
                     </p>
 
                     <p class="form-row">
@@ -64,7 +89,21 @@
                     </p>
 
                 </form>
-            </div>
         </div>
     </div>
 </div>
+<!-- Handle validate password -->
+<script>
+    function checkPasswordMatch() {
+        var password = $("#password1").val();
+        var confirmPassword = $("#password2").val();
+        if (confirmPassword=='') {$("#checkPasswordMatch").html("");return;}
+        if (password != confirmPassword)
+            $("#checkPasswordMatch").html("<small>Passwords do not match!</small>");
+        else
+            $("#checkPasswordMatch").html("<small>Passwords match!</small>");
+    }
+    $(document).ready(function(){
+        $("#password2").keyup(checkPasswordMatch);
+    });
+</script>

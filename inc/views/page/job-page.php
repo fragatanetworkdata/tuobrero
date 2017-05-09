@@ -1,6 +1,6 @@
 <?php
 
-    $job_id = $_GET['job_id'];
+    $job_id = @$_GET['job_id'];
     $result = $con->query("SELECT * from jobs where job_id='$job_id'");
     $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
 

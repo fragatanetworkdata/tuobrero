@@ -47,7 +47,7 @@
 
                     echo "
                         <tr>
-                            <td class='title'><a href='#''>".$row['title']."</a></td>
+                            <td class='title'><a href='#'>".$row['title']."</a></td>
                             <td class='centered'>-</td>
                             <td>".date_format(date_create($row['date_posted']), "M d, Y")."</td>
                             <td>".date_format(date_create($row['closing_date']), "M d, Y")."</td>
@@ -55,7 +55,7 @@
                             <td class='action'>
                                 <a href='?view=update-job&job_id=".$row['job_id']."'><i class='fa fa-pencil'></i> Edit</a>
                                 <a href='#'><i class='fa  fa-check'></i> Mark Filled</a>
-                                <a href='#' class='delete'><i class='fa fa-remove'></i> Delete</a>
+                                <a href='javascript:void(0);' class='delete'><i class='fa fa-remove'></i> Delete</a>
                             </td>
                         </tr>
                     ";
@@ -70,3 +70,25 @@
     </div>
 
 </div>
+<!-- delete job-->
+<script>
+    $(document).ready(function(){
+        $(".delete").click(function(){
+            href_del = $(this).parent().children('a:first-child').attr('href');
+            job_id = href_del.substr(href_del.lastIndexOf('job_id=')+7);
+            job_del_ele = $(this).parents('tr');
+            $.ajax({
+                url:"inc/views/employer/del-job.php",
+                type:"post",
+                dataType:"text",
+                data:{del:job_id},
+                success:function(res){
+//                    console.log(res);
+                    if(res=='success') job_del_ele.remove();
+
+                }
+            });
+
+        });
+    });
+</script>
