@@ -14,6 +14,11 @@
     </div>
 </div>
 
+<?php
+    $result = $con->query("SELECT * from resumes");
+
+?>
+
 
 <!-- Content
 ================================================== -->
@@ -29,86 +34,34 @@
             </form>
 
             <ul class="resumes-list">
+                <?php
 
-                <li><a href="resume-page.html">
-                        <img src="images/resumes-list-avatar-01.png" alt="">
+                while($row = $result->fetch_assoc()) {
+                    $skills = explode(',', $row['skills']);
+                    echo '<li><a href="resume-page.html">
+                        <img src="http://www.vasterad.com/themes/workscout/images/avatar-placeholder.png" alt="">
                         <div class="resumes-list-content">
-                            <h4>John Doe <span>UX/UI Graphic Designer</span></h4>
-                            <span><i class="fa fa-map-marker"></i> Melbourne</span>
-                            <span><i class="fa fa-money"></i> $100 / hour</span>
-                            <p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
+                            <h4>'.$row['name'].' <span>'.$row['professional_title'].'</span></h4>
+                            <span><i class="fa fa-map-marker"></i> '.$row['location'].'</span>
+                            <span><i class="fa fa-envelope"></i> '.$row['email'].'</span>    
 
-                            <div class="skills">
-                                <span>JavaScript</span>
-                                <span>PHP</span>
-                                <span>WordPress</span>
-                            </div>
+                            <div class="skills">';
+
+                    foreach($skills as $skill){
+                        echo '<span>'.$skill.'</span>';  
+                    }        
+                    echo '</div>
                             <div class="clearfix"></div>
 
                         </div>
                     </a>
                     <div class="clearfix"></div>
-                </li>
-
-                <li><a href="resume-page.html">
-                        <img src="images/avatar-placeholder.png" alt="">
-                        <div class="resumes-list-content">
-                            <h4>Tom Smith <span>iOS Mobile Developer</span></h4>
-                            <span><i class="fa fa-map-marker"></i> Sydney</span>
-                            <span><i class="fa fa-money"></i> $35 / hour</span>
-                            <p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
-
-                            <div class="skills">
-                                <span>iOS Development</span>
-                                <span>iOS App Development</span>
-                                <span>Objective-C</span>
-                            </div>
-                            <div class="clearfix"></div>
-
-                        </div>
-                    </a>
-                    <div class="clearfix"></div>
-                </li>
-
-                <li><a href="resume-page.html">
-                        <img src="images/resumes-list-avatar-02.png" alt="">
-                        <div class="resumes-list-content">
-                            <h4>Kathy Berry <span>SEO / SEM Strategist</span></h4>
-                            <span><i class="fa fa-map-marker"></i> London</span>
-                            <span><i class="fa fa-money"></i> $75 / hour</span>
-                            <p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
-
-                            <div class="skills">
-                                <span>Strategic planning</span>
-                                <span>Business Analysis</span>
-                            </div>
-                            <div class="clearfix"></div>
-
-                        </div>
-                    </a>
-                    <div class="clearfix"></div>
-                </li>
-
-                <li><a href="resume-page.html">
-                        <img src="images/resumes-list-avatar-03.png" alt="">
-                        <div class="resumes-list-content">
-                            <h4>Martin Kowalski <span>Content Writer and Copywriter</span></h4>
-                            <span><i class="fa fa-map-marker"></i> Warsaw</span>
-                            <span><i class="fa fa-money"></i> $15 / hour</span>
-                            <p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
-
-                            <div class="skills">
-                                <span>Copywriting</span>
-                                <span>Content Writing</span>
-                                <span>Blog Writing</span>
-                            </div>
-                            <div class="clearfix"></div>
-
-                        </div>
-                    </a>
-                    <div class="clearfix"></div>
-                </li>
-
+                </li>';
+                }
+                
+                ?>    
+                
+     
             </ul>
             <div class="clearfix"></div>
 

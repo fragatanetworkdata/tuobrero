@@ -17,12 +17,14 @@
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $user_id = $_SESSION['user_id'];
             $name = $_POST['name'];
+            $email = $_POST['email'];
             $title = $_POST['title'];
             $location = $_POST['location'];
             $description = mysqli_real_escape_string($con, $_POST['description']);
-            $url = mysqli_real_escape_string($con, $_POST['url']);
+            $url = $_POST['url'];
             $education = mysqli_real_escape_string($con, $_POST['education']);
             $experience = mysqli_real_escape_string($con, $_POST['experience']);
+            $skills = $_POST['skills'];
             $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');
 
 //            for($j=0; $j < count($_FILES["image"]['name']); $j++){
@@ -31,7 +33,8 @@
 //            }
 
 
-            $sql = "INSERT INTO resumes (user_id, name, professional_title, location, content, url, education, experience, date_posted) VALUES ($user_id, '$name', '$title', '$location', '$description', '$url', '$education', '$experience', '$date_posted')";
+            $sql = "INSERT INTO resumes (user_id, name, email, professional_title, location, content, url, education, experience, skills, date_posted) VALUES ($user_id, '$name', '$email', '$title', '$location', '$description', '$url', '$education', '$experience', '$skills', '$date_posted')";
+            echo $sql;
             $con->query($sql);
         }
 
@@ -55,7 +58,7 @@
                 <!-- Email -->
                 <div class="form">
                     <h5>Your Email</h5>
-                    <input class="search-field" type="text" placeholder="mail@example.com" value=""/>
+                    <input name="email" class="search-field" type="text" placeholder="mail@example.com" value=""/>
                 </div>
 
                 <!-- Title -->
@@ -87,15 +90,10 @@
                 </div>
 
 
-                <!-- Add URLs -->
+                <!-- Add URL -->
                 <div class="form with-line">
-                    <h5>URL(s) <span>(optional)</span></h5>
-                    <div class="form-inside">
-
-                        <!-- Adding URL(s) -->
-                            <textarea name="url" class="search-field" placeholder="http://" cols="30" rows="5"></textarea>
-
-                    </div>
+                    <h5>URL <span>(optional)</span></h5>
+                    <input name="url" class="search-field" type="text" placeholder="e.g. example.com" value=""/>
                 </div>
 
 
@@ -119,7 +117,13 @@
 
                     </div>
                 </div>
-
+                
+                    <!-- Skills -->
+                <div class="form">
+                    <h5>Skills </span></h5>
+                    <input name="skills" class="search-field" type="text" placeholder="e.g. PHP, Social Media, Management" value=""/>
+                    <p class="note">Comma separate tags, such as required skills or technologies, for this job.</p>
+                </div>
 
                 <div class="divider margin-top-0 padding-reset"></div>
 <!--                <a href="#" class="button big margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>-->
