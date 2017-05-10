@@ -13,7 +13,7 @@
 		case 'browse-categories':
 		case 'browse-jobs':
 		case 'search-jobs':
-		case 'manage-resumess':
+		case 'manage-resumes':
 			include("views/candidate/$temp.php");
 			break;
 		case 'job-page':
