@@ -4,6 +4,17 @@
     $result = $con->query("SELECT * from jobs where job_id='$job_id'");
     $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $user_id = $_SESSION['user_id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $note = mysqli_real_escape_string($con, $_POST['note']);
+
+        $query = "INSERT INTO applications (`user_id`, `job_id`, `name`, `email`, `note`) VALUES ('$user_id', '$job_id', '$name', '$email', '$note') ";
+        $con->query($query);
+ 
+    }
 ?>
 
 
@@ -99,10 +110,10 @@
                     </div>
 
                     <div class="small-dialog-content">
-                        <form action="#" method="get" >
-                            <input type="text" placeholder="Full Name" value=""/>
-                            <input type="text" placeholder="Email Address" value=""/>
-                            <textarea placeholder="Your message / cover letter sent to the employer"></textarea>
+                        <form method="POST" >
+                            <input name="name" type="text" placeholder="Full Name" value=""/>
+                            <input name="email" type="text" placeholder="Email Address" value=""/>
+                            <textarea name="note" placeholder="Your message / cover letter sent to the employer"></textarea>
 
                             <!-- Upload CV -->
                             <div class="upload-info"><strong>Upload your CV (optional)</strong> <span>Max. file size: 5MB</span></div>
