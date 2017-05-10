@@ -10,8 +10,10 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $note = mysqli_real_escape_string($con, $_POST['note']);
+        $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');;
 
-        $query = "INSERT INTO applications (`user_id`, `job_id`, `name`, `email`, `note`) VALUES ('$user_id', '$job_id', '$name', '$email', '$note') ";
+        $query = "INSERT INTO applications (`user_id`, `job_id`, `name`, `email`, `note`, `date_posted`) VALUES ('$user_id', '$job_id', '$name', '$email', '$note', '$date_posted') ";
+        echo $query;
         $con->query($query);
  
     }

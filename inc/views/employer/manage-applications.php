@@ -57,274 +57,103 @@
 
     <!-- Applications -->
     <div class="sixteen columns">
+        <?php
+                $user_id = $_SESSION['user_id'];
+                $query = "Select * from applications where job_id in (select job_id from jobs where user_id='$user_id')";
+                echo $query;
+                $result = $con->query($query);
+                while($row = $result->fetch_assoc()) {
 
-        <!-- Application #1 -->
-        <div class="application">
-            <div class="app-content">
+                    echo '
+                            <div class="application">
+                                <div class="app-content">
+                                    <div class="info">
+                                        <img src="http://www.vasterad.com/themes/workscout/images/avatar-placeholder.png" alt="">
+                                        <span>'.$row['name'].'</span>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-file-text"></i> CV</a></li>
+                                            <li><a href="mailto'.$row['email'].'"><i class="fa fa-envelope"></i> Contact</a></li>
+                                        </ul>
+                                    </div>
 
-                <!-- Name / Avatar -->
-                <div class="info">
-                    <img src="images/resumes-list-avatar-01.png" alt="">
-                    <span>John Doe</span>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-file-text"></i> Download CV</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
+                                    <!-- Buttons -->
+                                    <div class="buttons">
+                                        <a href="#one-1" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a href="#three-1" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
+                                    </div>
+                                    <div class="clearfix"></div>
 
-                <!-- Buttons -->
-                <div class="buttons">
-                    <a href="#one-1" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
-                    <a href="#two-1" class="button gray app-link"><i class="fa fa-sticky-note"></i> Add Note</a>
-                    <a href="#three-1" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
-                </div>
-                <div class="clearfix"></div>
+                                </div>
 
-            </div>
+                                <!--  Hidden Tabs -->
+                                <div class="app-tabs">
 
-            <!--  Hidden Tabs -->
-            <div class="app-tabs">
+                                    <a href="#" class="close-tab button gray"><i class="fa fa-close"></i></a>
 
-                <a href="#" class="close-tab button gray"><i class="fa fa-close"></i></a>
+                                    <!-- First Tab -->
+                                    <div class="app-tab-content" id="one-1">
 
-                <!-- First Tab -->
-                <div class="app-tab-content" id="one-1">
+                                        <div class="select-grid">
+                                            <select data-placeholder="Application Status" class="chosen-select-no-single">
+                                                <option value="">Application Status</option>
+                                                <option value="new">New</option>
+                                                <option value="interviewed">Interviewed</option>
+                                                <option value="offer">Offer extended</option>
+                                                <option value="hired">Hired</option>
+                                                <option value="archived">Archived</option>
+                                            </select>
+                                        </div>
 
-                    <div class="select-grid">
-                        <select data-placeholder="Application Status" class="chosen-select-no-single">
-                            <option value="">Application Status</option>
-                            <option value="new">New</option>
-                            <option value="interviewed">Interviewed</option>
-                            <option value="offer">Offer extended</option>
-                            <option value="hired">Hired</option>
-                            <option value="archived">Archived</option>
-                        </select>
-                    </div>
+                                        <div class="select-grid">
+                                            <input type="number" min="1" max="5" placeholder="Rating (out of 5)">
+                                        </div>
 
-                    <div class="select-grid">
-                        <input type="number" min="1" max="5" placeholder="Rating (out of 5)">
-                    </div>
+                                        <div class="clearfix"></div>
+                                        <a href="#" class="button margin-top-15">Save</a>
+                                        <a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
 
-                    <div class="clearfix"></div>
-                    <a href="#" class="button margin-top-15">Save</a>
-                    <a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
+                                    </div>
 
-                </div>
+                                     <!-- Second Tab -->
+                                    <div class="app-tab-content"  id="two-1">
+                                        <textarea placeholder="Private note regarding this application"></textarea>
+                                        <a href="#" class="button margin-top-15">Add Note</a>
+                                    </div>   
 
-                <!-- Second Tab -->
-                <div class="app-tab-content"  id="two-1">
-                    <textarea placeholder="Private note regarding this application"></textarea>
-                    <a href="#" class="button margin-top-15">Add Note</a>
-                </div>
+                                    <!-- third Tab -->
+                                    <div class="app-tab-content"  id="three-1">
+                                        <i>Full Name:</i>
+                                        <span>'.$row['name'].'</span>
 
-                <!-- Third Tab -->
-                <div class="app-tab-content"  id="three-1">
-                    <i>Full Name:</i>
-                    <span>John Doe</span>
+                                        <i>Email:</i>
+                                        <span><a href="">'.$row['email'].'</a></a></span>
 
-                    <i>Email:</i>
-                    <span><a href="/cdn-cgi/l/email-protection#771d181f195913181237120f161a071b125914181a"><span class="__cf_email__" data-cfemail="4923262127672d262c092c31282439252c672a2624">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a></span>
+                                        <i>Message:</i>
+                                        <span>'.$row['note'].' </span>
+                                    </div>
 
-                    <i>Message:</i>
-                    <span>Praesent efficitur dui eget condimentum viverra. Sed non maximus ipsum, non consequat nulla. Vivamus nec convallis nisi, sit amet egestas magna. Quisque vulputate lorem sit amet ornare efficitur. Duis aliquam est elit, sed tincidunt enim commodo sed. Fusce tempus magna id sagittis laoreet. Proin porta luctus ante eu ultrices. Sed porta consectetur purus, rutrum tincidunt magna dictum tempus. </span>
-                </div>
+                                </div>
+                                
+                                <!-- Footer -->
+                                <div class="app-footer">
 
-            </div>
+                                    <div class="rating no-stars">
+                                        <div class="star-rating"></div>
+                                        <div class="star-bg"></div>
+                                    </div>
 
-            <!-- Footer -->
-            <div class="app-footer">
+                                    <ul>
+                                        <li><i class="fa fa-file-text-o"></i> '.$row['application_status'].'</li>
+                                        <li><i class="fa fa-calendar"></i> '.date_format(date_create($row['date_posted']), "M d, Y").'</li>
+                                    </ul>
+                                    <div class="clearfix"></div>
 
-                <div class="rating no-stars">
-                    <div class="star-rating"></div>
-                    <div class="star-bg"></div>
-                </div>
+                                </div>
+                            </div>';
+                }
+            ?>
 
-                <ul>
-                    <li><i class="fa fa-file-text-o"></i> New</li>
-                    <li><i class="fa fa-calendar"></i> September 24, 2015</li>
-                </ul>
-                <div class="clearfix"></div>
-
-            </div>
-        </div>
-
-
-        <!-- Application #2 -->
-        <div class="application">
-            <div class="app-content">
-
-                <!-- Name / Avatar -->
-                <div class="info">
-                    <img src="images/avatar-placeholder.png" alt="">
-                    <span><a href="#">Tom Smith</a></span>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-file-text"></i> Download CV</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Buttons -->
-                <div class="buttons">
-                    <a href="#one-2" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
-                    <a href="#two-2" class="button gray app-link"><i class="fa fa-sticky-note"></i> Add Note</a>
-                    <a href="#three-2" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
-                </div>
-                <div class="clearfix"></div>
-
-            </div>
-
-            <!--  Hidden Tabs -->
-            <div class="app-tabs">
-
-                <a href="#" class="close-tab button gray"><i class="fa fa-close"></i></a>
-
-                <!-- First Tab -->
-                <div class="app-tab-content" id="one-2">
-
-                    <div class="select-grid">
-                        <select data-placeholder="Application Status" class="chosen-select-no-single">
-                            <option value="">Application Status</option>
-                            <option value="new">New</option>
-                            <option value="interviewed">Interviewed</option>
-                            <option value="offer">Offer extended</option>
-                            <option value="hired">Hired</option>
-                            <option value="archived">Archived</option>
-                        </select>
-                    </div>
-
-                    <div class="select-grid">
-                        <input type="number" min="1" max="5" placeholder="Rating (out of 5)">
-                    </div>
-
-                    <div class="clearfix"></div>
-                    <a href="#" class="button margin-top-15">Save</a>
-                    <a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
-
-                </div>
-
-                <!-- Second Tab -->
-                <div class="app-tab-content"  id="two-2">
-                    <textarea placeholder="Private note regarding this application"></textarea>
-                    <a href="#" class="button margin-top-15">Add Note</a>
-                </div>
-
-                <!-- Third Tab -->
-                <div class="app-tab-content" id="three-2">
-                    <i>Full Name:</i>
-                    <span>Tom Smith</span>
-
-                    <i>Email:</i>
-                    <span><a href="/cdn-cgi/l/email-protection#9eeaf1f3b0edf3f7eaf6defbe6fff3eef2fbb0fdf1f3"><span class="__cf_email__" data-cfemail="1d697270336e707469755d78657c706d7178337e7270">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a></span>
-
-                    <i>Message:</i>
-                    <span>Morbi non pharetra quam. Pellentesque eget massa dolor. Sed vitae placerat eros, quis aliquet purus. Donec feugiat sapien urna, at sagittis libero pellentesque in. Praesent efficitur dui eget condimentum viverra. Sed non maximus ipsum, non consequat nulla. Vivamus nec convallis nisi, sit amet egestas magna. Quisque vulputate lorem sit amet ornare efficitur. Duis aliquam est elit, sed tincidunt enim commodo sed. Fusce tempus magna id sagittis laoreet. Proin porta luctus ante eu ultrices. Sed porta consectetur purus, rutrum tincidunt magna dictum tempus. </span>
-                </div>
-
-            </div>
-
-            <!-- Footer -->
-            <div class="app-footer">
-
-                <div class="rating five-stars">
-                    <div class="star-rating"></div>
-                    <div class="star-bg"></div>
-                </div>
-
-                <ul>
-                    <li><i class="fa fa-file-text-o"></i> Interviewed</li>
-                    <li><i class="fa fa-calendar"></i> September 22, 2015</li>
-                </ul>
-                <div class="clearfix"></div>
-
-            </div>
-        </div>
-
-
-        <!-- Application #3 -->
-        <div class="application">
-            <div class="app-content">
-
-                <!-- Name / Avatar -->
-                <div class="info">
-                    <img src="images/avatar-placeholder.png" alt="">
-                    <span>Kathy Berry</span>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-file-text"></i> Download CV</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Buttons -->
-                <div class="buttons">
-                    <a href="#one-3" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
-                    <a href="#two-3" class="button gray app-link"><i class="fa fa-sticky-note"></i> Add Note</a>
-                    <a href="#three-3" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
-                </div>
-                <div class="clearfix"></div>
-
-            </div>
-
-            <!--  Hidden Tabs -->
-            <div class="app-tabs">
-
-                <a href="#" class="close-tab button gray"><i class="fa fa-close"></i></a>
-
-                <!-- First Tab -->
-                <div class="app-tab-content" id="one-3">
-
-                    <div class="select-grid">
-                        <select data-placeholder="Application Status" class="chosen-select-no-single">
-                            <option value="">Application Status</option>
-                            <option value="new">New</option>
-                            <option value="interviewed">Interviewed</option>
-                            <option value="offer">Offer extended</option>
-                            <option value="hired">Hired</option>
-                            <option value="archived">Archived</option>
-                        </select>
-                    </div>
-
-                    <div class="select-grid">
-                        <input type="number" min="1" max="5" placeholder="Rating (out of 5)">
-                    </div>
-
-                    <div class="clearfix"></div>
-                    <a href="#" class="button margin-top-15">Save</a>
-                    <a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
-
-                </div>
-
-                <!-- Second Tab -->
-                <div class="app-tab-content"  id="two-3">
-                    <textarea placeholder="Private note regarding this application"></textarea>
-                    <a href="#" class="button margin-top-15">Add Note</a>
-                </div>
-
-                <!-- Third Tab -->
-                <div class="app-tab-content"  id="three-3">
-                    <i>Full Name:</i>
-                    <span>Kathy Berry</span>
-
-                    <i>Email:</i>
-                    <span><a href="/cdn-cgi/l/email-protection#771c16031f0e59151205050e37120f161a071b125914181a"><span class="__cf_email__" data-cfemail="375c56435f4e19555245454e77524f565a475b521954585a">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a></span>
-                </div>
-
-            </div>
-
-            <!-- Footer -->
-            <div class="app-footer">
-
-                <div class="rating four-stars">
-                    <div class="star-rating"></div>
-                    <div class="star-bg"></div>
-                </div>
-
-                <ul>
-                    <li><i class="fa fa-file-text-o"></i> Interviewed</li>
-                    <li><i class="fa fa-calendar"></i> September 26, 2015</li>
-                </ul>
-                <div class="clearfix"></div>
-
-            </div>
+        
         </div>
 
 
