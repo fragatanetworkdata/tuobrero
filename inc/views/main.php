@@ -10,18 +10,17 @@
 
                 <!-- Form -->
                 <h2>Find job</h2>
-                <input type="text" class="ico-01" placeholder="job title, keywords or company name" value=""/>
-                <input type="text" class="ico-02" placeholder="city, province or region" value=""/>
-                <button><i class="fa fa-search"></i></button>
+                <form action="?view=search-jobs" method="POST">
+                    <input name="query" type="text" placeholder="job title, company name or location" value=""/>
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+                
 
-                <!-- Browse Jobs -->
-                <div class="browse-jobs">
-                    Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
-                </div>
+
                 
                 <!-- Announce -->
                 <div class="announce">
-                    We’ve over <strong>15 000</strong> job offers for you!
+                    We’ve many job offers for you!
                 </div>
 
             </div>
@@ -76,78 +75,30 @@
         <h3 class="margin-bottom-25">Recent Jobs</h3>
         <ul class="job-list">
 
-            <li class="highlighted"><a href="job-page.html">
-                <img src="images/job-list-logo-01.png" alt="">
-                <div class="job-list-content">
-                    <h4>Marketing Coordinator - SEO / SEM Experience <span class="full-time">Full-Time</span></h4>
-                    <div class="job-icons">
-                        <span><i class="fa fa-briefcase"></i> King</span>
-                        <span><i class="fa fa-map-marker"></i> Sydney</span>
-                        <span><i class="fa fa-money"></i> $100 / hour</span>
-                    </div>
-                </div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
+            <?php
+            $result = $con->query("SELECT * from jobs order by date_posted desc limit 5");
 
-            <li><a href="job-page.html">
-                <img src="images/job-list-logo-02.png" alt="">
-                <div class="job-list-content">
-                    <h4>Core PHP Developer for Site Maintenance <span class="part-time">Part-Time</span></h4>
-                    <div class="job-icons">
-                        <span><i class="fa fa-briefcase"></i> Cubico</span>
-                        <span><i class="fa fa-map-marker"></i> London</span>
-                        <span><i class="fa fa-money"></i> $50 / hour</span>
+            while($row = $result->fetch_assoc()) {
+                echo '<li><a href="?view=job-page&job_id='.$row['job_id'].'">
+                    <img src="http://www.vasterad.com/themes/workscout/images/job-list-logo-05.png" alt="">
+                    <div class="job-list-content">
+                        <h4>'.$row['title'].' <span class="'.$row['job_type'].'">'.$row['job_type'].'</span></h4>
+                        <div class="job-icons">
+                            <span><i class="fa fa-briefcase"></i> '.$row['company'].'</span>
+                            <span><i class="fa fa-map-marker"></i> '.$row['location'].'</span>
+                            <span><i class="fa fa-money"></i> '.$row['rate'].'</span>
+                        </div>
+                        
                     </div>
-                </div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
+                    </a>
+                    <div class="clearfix"></div>
+                </li>';
+            }
 
-            <li><a href="job-page.html">
-                <img src="images/job-list-logo-03.png" alt="">
-                <div class="job-list-content">
-                    <h4>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h4>
-                    <div class="job-icons">
-                        <span><i class="fa fa-briefcase"></i> King</span>
-                        <span><i class="fa fa-map-marker"></i> Sydney</span>
-                        <span><i class="fa fa-money"></i> $15 / hour</span>
-                    </div>
-                </div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
-
-            <li><a href="job-page.html">
-                <img src="images/job-list-logo-04.png" alt="">
-                <div class="job-list-content">
-                    <h4>Power Systems User Experience Designer  <span class="internship">Internship</span></h4>
-                    <div class="job-icons">
-                        <span><i class="fa fa-briefcase"></i> Hexagon</span>
-                        <span><i class="fa fa-map-marker"></i> London</span>
-                        <span><i class="fa fa-money"></i> $75 / hour</span>
-                    </div>
-                </div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
-
-            <li><a href="job-page.html">
-                <img src="images/job-list-logo-05.png" alt="">
-                <div class="job-list-content">
-                    <h4>iPhone / Android Music App Development <span class="temporary">Temporary</span></h4>
-                    <div class="job-icons">
-                        <span><i class="fa fa-briefcase"></i> Mates</span>
-                        <span><i class="fa fa-map-marker"></i> New York</span>
-                        <span><i class="fa fa-money"></i> $115 / hour</span>
-                    </div>
-                </div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
+            ?>   
         </ul>
 
-        <a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+        <a href="?view=browse-jobs" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
         <div class="margin-bottom-55"></div>
     </div>
     </div>

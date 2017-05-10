@@ -30,7 +30,7 @@
         
         <form action="?view=search-jobs" method="POST" class="list-search">
             <button><i class="fa fa-search"></i></button>
-            <input name="query" type="text" placeholder="job title, keywords or company name" value=""/>
+            <input name="query" type="text" placeholder="job title, company name or location" value=""/>
             <div class="clearfix"></div>
         </form>
 
