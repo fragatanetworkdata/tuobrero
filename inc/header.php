@@ -64,6 +64,7 @@
 				<li><a href="?view=signup"><i class="fa fa-user"></i> Sign Up</a></li>
 				<li><a href="?view=login"><i class="fa fa-lock"></i> Log In</a></li>
 				<?php else: ?>
+				<li><button><i class="fa fa-user"></i> Hi, <?php echo $_SESSION['username']; ?></button></li>
 				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Log Out</a></li>
 				<?php endif; ?>
 			</ul>			
