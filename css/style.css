@@ -7646,3 +7646,13 @@ div.layout-style {
 .error h3 {
     color: #e12335;
 }
+
+ul.float-right li.username a {
+    background-color: #fff;
+
+}
+
+ul.float-right li.username a:hover {
+    background-color: #fff !important;
+    color: #333;
+}
