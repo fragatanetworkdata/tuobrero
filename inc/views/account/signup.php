@@ -25,15 +25,15 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $result = $con->query("select username from users where username = '$username'");
-    if(mysqli_num_rows($result)==1) echo "<div align='center'><h3 style='color:red;'>Error! Duplicate user</h3></div>";
+    if(mysqli_num_rows($result)==1) echo "<div class='error'><h3>Error! Duplicate user</h3></div>";
     else {
         $password = $_POST['password1'];
         $email = $_POST['email'];
         $usertype = (int) $_POST['user_type'];
         $sql = "insert into users (username, password, email, role) values('$username','$password','$email','$usertype') ";
         $insert = $con->query($sql);
-        if($insert) echo '<div align="center"><h3><span style="color: green;">Signup successfully!</span> Click here to <a href="?view=login">log in</a></h3></div>';
-        else echo '<div align="center" style="color: red;">Something wrong!</div>';
+        if($insert) echo '<div align="center"><h3><span style="color: #26ae61;">Signup successfully!</span> Click here to <a href="?view=login">log in</a></h3></div>';
+        else echo '<div class="error">Something wrong!</div>';
     }
 }
 ?>

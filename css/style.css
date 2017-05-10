@@ -7638,3 +7638,11 @@ div.layout-style {
     }
 }
 
+.error {
+    text-align: center;
+
+}
+
+.error h3 {
+    color: #e12335;
+}

@@ -37,7 +37,8 @@
 
             header("location: index.php"); 
         } else {
-            echo "Username or Password is invalid";
+            echo "<div class='error'><h3>Username or Password is invalid</h3></div>";
+
         }
     }
     
