@@ -4,7 +4,7 @@
 	switch ($temp) {
 		case 'add-job':
 		case 'manage-jobs':
-		case 'update-jobs':
+		case 'update-job':
 		case 'browse-resumes':
 		case 'manage-applications':
 			include("views/employer/$temp.php");
@@ -14,6 +14,7 @@
 		case 'browse-jobs':
 		case 'search-jobs':
 		case 'manage-resumes':
+		case 'update-resume':
 			include("views/candidate/$temp.php");
 			break;
 		case 'job-page':

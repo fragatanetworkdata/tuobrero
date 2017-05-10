@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="form-row form-row-wide">
                         <label for="username2">Username:
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username2" value="" />
+                            <input type="text" class="input-text" name="username" id="username2" value="" autofocus/>
                         </label>
                     </p>
 

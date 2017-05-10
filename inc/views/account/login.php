@@ -60,7 +60,7 @@
                     <p class="form-row form-row-wide">
                         <label for="username">Username
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username" value="" />
+                            <input type="text" class="input-text" name="username" id="username" value="" autofocus/>
                         </label>
                     </p>
 
