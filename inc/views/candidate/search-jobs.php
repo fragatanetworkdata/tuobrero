@@ -1,3 +1,10 @@
+<style>
+    .job-list li, .job-list li:last-child {
+        border: none;
+    }
+
+</style>
+
 
 <?php
     $query = $_POST['query'];
@@ -7,12 +14,6 @@
     $row_cnt = $result->num_rows;
 ?>
 
-<style>
-    .job-list li, .job-list li:last-child {
-        border: none;
-    }
-
-</style>
 
 <!-- Titlebar
 ================================================== -->

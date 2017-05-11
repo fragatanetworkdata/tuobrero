@@ -6,6 +6,7 @@
 		case 'manage-jobs':
 		case 'update-job':
 		case 'browse-resumes':
+		case 'search-resumes':
 		case 'manage-applications':
 			include("views/employer/$temp.php");
 			break;

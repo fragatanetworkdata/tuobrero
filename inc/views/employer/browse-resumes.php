@@ -27,9 +27,9 @@
     <div class="eleven columns">
         <div class="padding-right">
 
-            <form action="#" method="get" class="list-search">
+            <form action="?view=search-resumes" method="post" class="list-search">
                 <button><i class="fa fa-search"></i></button>
-                <input type="text" placeholder="Search freelancer services (e.g. logo design)" value=""/>
+                <input name="query" type="text" placeholder="Search resumes . . ." value=""/>
                 <div class="clearfix"></div>
             </form>
 
