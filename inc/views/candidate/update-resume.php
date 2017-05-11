@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="sixteen columns">
-            <h2><i class="fa fa-plus-circle"></i> Add Resume</h2>
+            <h2><i class="fa fa-plus-circle"></i> Edit Resume</h2>
         </div>
 
     </div>
@@ -13,34 +13,38 @@
 
 
 <?php
-$resume_id = $_GET['resume_id'];
-$result = $con->query("SELECT * from resumes where resume_id='$resume_id' and user_id = $_SESSION[user_id]");
-$resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $resume_id = $_GET['resume_id'];
+    $result = $con->query("SELECT * from resumes where resume_id='$resume_id' and user_id = $_SESSION[user_id]");
+    $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-//            $user_id = $_SESSION['user_id'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $title = $_POST['title'];
-            $location = $_POST['location'];
-            $description = mysqli_real_escape_string($con, $_POST['description']);
-            $url = $_POST['url'];
-            $education = mysqli_real_escape_string($con, $_POST['education']);
-            $experience = mysqli_real_escape_string($con, $_POST['experience']);
-            $skills = $_POST['skills'];
-            $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $user_id = $_SESSION['user_id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $title = $_POST['title'];
+        $location = $_POST['location'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
+        $url = $_POST['url'];
+        $education = mysqli_real_escape_string($con, $_POST['education']);
+        $experience = mysqli_real_escape_string($con, $_POST['experience']);
+        $skills = $_POST['skills'];
+        $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');
 
-//            for($j=0; $j < count($_FILES["image"]['name']); $j++){
-//                echo $_FILES["image"]['tmp_name'][$j] . "\n";
-//                move_uploaded_file($_FILES["upload"]["tmp_name"][$j],"upload/" . $_FILES["upload"]["name"][$j]);
-//            }
-
-
-//            $sql = "INSERT INTO resumes (user_id, name, email, professional_title, location, content, url, education, experience, skills, date_posted) VALUES ($user_id, '$name', '$email', '$title', '$location', '$description', '$url', '$education', '$experience', '$skills', '$date_posted')";
-            $sql = "UPDATE resumes SET name = '$name', email = '$email', professional_title = '$title', location = '$location', content = '$description', url = '$url', education = '$education', experience = '$experience', skills = '$skills', date_posted = '$date_posted' where resume_id = '$resume_id'";
-            echo $sql;
-            $con->query($sql);
+        if (!empty($_FILES["image"]['tmp_name'])) {
+            $image = $user_id.'_'.$_FILES["image"]['name'];
+            $image_tmp = $_FILES["image"]['tmp_name'];
+            move_uploaded_file($image_tmp, "images/candidate/" . $image);
+            $link_img = "images/candidate/" . $image;
         }
+        else {
+            $link_img = "images/candidate/avatar-placeholder.png";
+        }    
+
+
+        $sql = "UPDATE resumes SET name = '$name', email = '$email', professional_title = '$title', location = '$location', content = '$description', url = '$url', education = '$education', experience = '$experience', skills = '$skills', link_img = '$link_img', date_posted = '$date_posted' where resume_id = '$resume_id'";
+        // echo $sql;
+        $con->query($sql);
+    }
 
 ?>
 
@@ -81,7 +85,7 @@ $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="form">
                     <h5>Photo <span>(optional)</span></h5>
                     <label class="upload-btn">
-                        <input name="image[]" type="file" multiple />
+                        <input name="image" type="file" />
                         <i class="fa fa-upload"></i> Browse
                     </label>
                     <span class="fake-input">No file selected</span>
@@ -137,3 +141,18 @@ $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('input[type=file]').change(function(){
+//            console.log($(this).val());//C:\fakepath\0013.jpg
+            var filename = $(this).val();
+            var lastIndex = filename.lastIndexOf("\\");
+             if (lastIndex >= 0) {
+                 filename = filename.substring(lastIndex + 1);
+              }
+            if (filename!="") $(".fake-input").html(filename);
+            else $(".fake-input").html('No file selected');
+        });
+    });
+</script>

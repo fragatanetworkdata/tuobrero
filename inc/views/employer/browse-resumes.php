@@ -39,7 +39,7 @@
                 while($row = $result->fetch_assoc()) {
                     $skills = explode(',', $row['skills']);
                     echo '<li><a href="resume-page.html">
-                        <img src="http://www.vasterad.com/themes/workscout/images/avatar-placeholder.png" alt="">
+                        <img src="'.$row['link_img'].'" alt="">
                         <div class="resumes-list-content">
                             <h4>'.$row['name'].' <span>'.$row['professional_title'].'</span></h4>
                             <span><i class="fa fa-map-marker"></i> '.$row['location'].'</span>

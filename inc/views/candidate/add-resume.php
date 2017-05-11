@@ -38,8 +38,12 @@
                 $image = $user_id.'_'.$_FILES["image"]['name'];
                 $image_tmp = $_FILES["image"]['tmp_name'];
                 move_uploaded_file($image_tmp, "images/candidate/" . $image);
-                $sql = "INSERT INTO resumes (user_id, name, email, professional_title, location, content, url, education, experience, link_img, skills, date_posted) VALUES ($user_id, '$name', '$email', '$title', '$location', '$description', '$url', '$education', '$experience', '$image', '$skills', '$date_posted')";
+                $link_img = "images/candidate/" . $image;
             }
+            else {
+                $link_img = "images/candidate/avatar-placeholder.png";
+            }   
+            $sql = "INSERT INTO resumes (user_id, name, email, professional_title, location, content, url, education, experience, link_img, skills, date_posted) VALUES ($user_id, '$name', '$email', '$title', '$location', '$description', '$url', '$education', '$experience', '$link_img', '$skills', '$date_posted')";
             $con->query($sql);
         }
 
