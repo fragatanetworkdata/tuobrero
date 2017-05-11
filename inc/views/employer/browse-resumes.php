@@ -38,7 +38,7 @@
 
                 while($row = $result->fetch_assoc()) {
                     $skills = explode(',', $row['skills']);
-                    echo '<li><a href="resume-page.html">
+                    echo '<li><a href="?view=resume-page&resume_id='.$row['resume_id'].'">
                         <img src="'.$row['link_img'].'" alt="">
                         <div class="resumes-list-content">
                             <h4>'.$row['name'].' <span>'.$row['professional_title'].'</span></h4>
