@@ -25,13 +25,11 @@
     <!-- Table -->
     <div class="sixteen columns">
 
-        <p class="margin-bottom-25">Your listings are shown in the table below. Expired listings will be automatically removed after 30 days.</p>
 
         <table class="manage-table responsive-table">
 
             <tr>
                 <th><i class="fa fa-file-text"></i> Title</th>
-                <th><i class="fa fa-check-square-o"></i> Filled?</th>
                 <th><i class="fa fa-calendar"></i> Date Posted</th>
                 <th><i class="fa fa-calendar"></i> Date Expires</th>
                 <th><i class="fa fa-user"></i> Applications</th>
@@ -40,21 +38,19 @@
             
             <?php
                 $user_id = $_SESSION['user_id'];
-                // $query = "Select job_id, title, filled, date_posted, closing_date from j where user_id='$user_id' ";
+                $query = "Select jobs.job_id, title, jobs.date_posted, closing_date, count(application_id) as cnt from jobs left join applications on jobs.job_id = applications.job_id where jobs.user_id='$user_id'  group by title ";
                 // echo $query;
-                $result = $con->query("Select job_id, title, filled, date_posted, closing_date from jobs where user_id='$user_id' ");
+                $result = $con->query($query);
                 while($row = $result->fetch_assoc()) {
 
                     echo "
                         <tr>
                             <td class='title'><a href='#'>".$row['title']."</a></td>
-                            <td class='centered'>-</td>
                             <td>".date_format(date_create($row['date_posted']), "M d, Y")."</td>
                             <td>".date_format(date_create($row['closing_date']), "M d, Y")."</td>
-                            <td class='centered'><a href='#' class='button'>Show (0)</a></td>
+                            <td class='centered'><a href='?view=manage-applications&job_id=".$row['job_id']."' class='button'>Show (".$row['cnt'].")</a></td>
                             <td class='action'>
                                 <a href='?view=update-job&job_id=".$row['job_id']."'><i class='fa fa-pencil'></i> Edit</a>
-                                <a href='#'><i class='fa  fa-check'></i> Mark Filled</a>
                                 <a href='javascript:void(0);' class='delete'><i class='fa fa-remove'></i> Delete</a>
                             </td>
                         </tr>

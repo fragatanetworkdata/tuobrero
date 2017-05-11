@@ -13,7 +13,7 @@
         $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');;
 
         $query = "INSERT INTO applications (`user_id`, `job_id`, `name`, `email`, `note`, `date_posted`) VALUES ('$user_id', '$job_id', '$name', '$email', '$note', '$date_posted') ";
-        echo $query;
+        // echo $query;
         $con->query($query);
  
     }

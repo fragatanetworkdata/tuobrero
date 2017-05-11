@@ -22,13 +22,6 @@
 ================================================== -->
 <div class="container">
 
-    <!-- Table -->
-    <div class="sixteen columns">
-
-        <p class="margin-bottom-25" style="float: left;">The job applications for <strong><a href="#">Power Systems User Experience Designer</a></strong> are listed below.</p>
-        <strong><a href="#" class="download-csv">Download CSV</a></strong>
-
-    </div>
 
 
     <div class="eight columns">
@@ -58,9 +51,9 @@
     <!-- Applications -->
     <div class="sixteen columns">
         <?php
-                $user_id = $_SESSION['user_id'];
-                $query = "Select * from applications where job_id in (select job_id from jobs where user_id='$user_id')";
-                echo $query;
+                $job_id = $_GET['job_id'];
+                $query = "Select * from applications where job_id ='$job_id'";
+                // echo $query;
                 $result = $con->query($query);
                 while($row = $result->fetch_assoc()) {
 

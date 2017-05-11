@@ -22,7 +22,6 @@
 					<ul>
 						<li><a href="?view=job-page">Job Page</a></li>
 						<li><a href="?view=resume-page">Resume Page</a></li>
-						<li><a href="?view=shortcodes">Shortcodes</a></li>
 	
 					</ul>
 				</li>
@@ -39,7 +38,6 @@
 				<li><a href="#">For Candidates</a>
 					<ul>
 						<li><a href="?view=browse-jobs">Browse Jobs</a></li>
-						<li><a href="?view=browse-categories">Browse Categories</a></li>
 						<li><a href="?view=add-resume">Add Resume</a></li>
 						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
 					</ul>
