@@ -86,7 +86,7 @@
                 <div class="form">
                     <h5>Photo <span>(optional)</span></h5>
                     <label class="upload-btn">
-                        <input name="image" type="file" />
+                        <input name="image" type="file" accept="image/*"/>
                         <i class="fa fa-upload"></i> Browse
                     </label>
                     <span class="fake-input">No file selected</span>

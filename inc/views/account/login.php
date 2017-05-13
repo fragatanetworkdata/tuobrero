@@ -60,14 +60,14 @@
                     <p class="form-row form-row-wide">
                         <label for="username">Username
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username" value="" autofocus/>
+                            <input type="text" class="input-text" name="username" id="username" value="" autofocus required/>
                         </label>
                     </p>
 
                     <p class="form-row form-row-wide">
                         <label for="password">Password
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password" id="password"/>
+                            <input class="input-text" type="password" name="password" id="password" required/>
                         </label>
                     </p>
 

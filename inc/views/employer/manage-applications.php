@@ -56,6 +56,13 @@
                 // echo $query;
                 $result = $con->query($query);
                 while($row = $result->fetch_assoc()) {
+                    $star_num = $row['rank'];
+                    if($star_num==0) $star_alphabet='no';
+                    else if($star_num==1) $star_alphabet='one';
+                    else if($star_num==2) $star_alphabet='two';
+                    else if($star_num==3) $star_alphabet='three';
+                    else if($star_num==4) $star_alphabet='four';
+                    else $star_alphabet='five';
 
                     echo '
                             <div class="application">
@@ -84,7 +91,7 @@
                                     <a href="#" class="close-tab button gray"><i class="fa fa-close"></i></a>
 
                                     <!-- First Tab -->
-                                    <div class="app-tab-content" id="one-1">
+                                    <div class="app-tab-content" id="one-1" data-placeholder="'.$row['application_id'].'">
 
                                         <div class="select-grid">
                                             <select data-placeholder="Application Status" class="chosen-select-no-single">
@@ -102,8 +109,8 @@
                                         </div>
 
                                         <div class="clearfix"></div>
-                                        <a href="#" class="button margin-top-15">Save</a>
-                                        <a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
+                                        <a href="javascript:void(0)" class="button margin-top-15">Save</a>
+                                        <a href="javascript:void(0)" class="button gray margin-top-15 delete-application">Delete this application</a>
 
                                     </div>
 
@@ -130,7 +137,7 @@
                                 <!-- Footer -->
                                 <div class="app-footer">
 
-                                    <div class="rating no-stars">
+                                    <div class="rating '.$star_alphabet.'-stars" data-placeholder="'.$star_alphabet.'">
                                         <div class="star-rating"></div>
                                         <div class="star-bg"></div>
                                     </div>
@@ -151,4 +158,51 @@
 
 
     </div>
-</div>
+<script>
+    $(document).ready(function(){
+        arr=['no','one','two','three','four','five'];
+        $('.button.margin-top-15').click(function(){
+            application_status=$(this).parent().find('select').val();//get val app_sts
+            star = $(this).parent().find('input[type=number]').val();//get val app_star
+            application_id = $(this).parent().attr('data-placeholder');//get app_id
+//            console.log(application_status,'  ',star,'  ',id);
+            if((!star)&&(!application_status)) return;//empty
+            star_show=$(this).parents('.application').find('.rating');//ele show star
+            application_status_show=$(this).parents('.application').find('.fa-file-text-o').parent();//text show app_sts
+//            console.log(application_status_show);
+            $.ajax({
+                url:"inc/views/employer/manage-application-ajax.php",
+                type:"post",
+                dataType:"text",
+                data:{update:application_id,application_status:application_status,rank:star},
+                success:function(res){
+//                    console.log(res);
+                    if(res=='success') {
+                        if(star){
+                            star_show.removeClass(star_show.attr('data-placeholder')+'-stars').addClass(arr[star]+'-stars');//rename class
+                            star_show.attr('data-placeholder',arr[star]);
+                        }
+                        if(application_status)  application_status_show.html('<i class="fa fa-file-text-o"></i> '+application_status);//change text app_sts
+                    }
+
+                }
+            });
+        });
+        $('.delete-application').click(function(){
+            application_id = $(this).parent().attr('data-placeholder');
+            application_ele = $(this).parents('.application');
+            $.ajax({
+                url:"inc/views/employer/manage-application-ajax.php",
+                type:"post",
+                dataType:"text",
+                data:{del:application_id},
+                success:function(res){
+                    if(res=='success')  application_ele.remove();
+
+
+                }
+            });
+        });
+
+    });
+</script>

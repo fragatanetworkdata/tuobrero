@@ -35,14 +35,11 @@
             $image_tmp = $_FILES["image"]['tmp_name'];
             move_uploaded_file($image_tmp, "images/candidate/" . $image);
             $link_img = "images/candidate/" . $image;
+            $sql = "UPDATE resumes SET name = '$name', email = '$email', professional_title = '$title', location = '$location', content = '$description', url = '$url', education = '$education', experience = '$experience', skills = '$skills', link_img = '$link_img', date_posted = '$date_posted' where resume_id = '$resume_id'";
         }
-        else {
-            $link_img = "images/candidate/avatar-placeholder.png";
-        }    
+        else $sql = "UPDATE resumes SET name = '$name', email = '$email', professional_title = '$title', location = '$location', content = '$description', url = '$url', education = '$education', experience = '$experience', skills = '$skills', date_posted = '$date_posted' where resume_id = '$resume_id'";
 
-
-        $sql = "UPDATE resumes SET name = '$name', email = '$email', professional_title = '$title', location = '$location', content = '$description', url = '$url', education = '$education', experience = '$experience', skills = '$skills', link_img = '$link_img', date_posted = '$date_posted' where resume_id = '$resume_id'";
-        // echo $sql;
+//         echo $sql;
         $con->query($sql);
     }
 
@@ -85,10 +82,11 @@
                 <div class="form">
                     <h5>Photo <span>(optional)</span></h5>
                     <label class="upload-btn">
-                        <input name="image" type="file" />
+                        <input name="image" type="file" accept="image/*"/>
                         <i class="fa fa-upload"></i> Browse
                     </label>
                     <span class="fake-input">No file selected</span>
+                    <span><img src="<?php echo $resume['link_img']?>" style="width: 100px;height: 100px;" alt=""></span>
                 </div>
 
                 <!-- Description -->
