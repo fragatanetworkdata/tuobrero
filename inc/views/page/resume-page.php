@@ -35,32 +35,6 @@
             </div>
         </div>
 
-        <div class="six columns">
-            <div class="two-buttons">
-
-                <a href="#small-dialog" class="popup-with-zoom-anim button"><i class="fa fa-envelope"></i> Send Message</a>
-
-                <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
-                    <div class="small-dialog-headline">
-                        <h2>Send Message to John Doe</h2>
-                    </div>
-
-                    <div class="small-dialog-content">
-                        <form action="#" method="get" >
-                            <input type="text" placeholder="Full Name" value=""/>
-                            <input type="text" placeholder="Email Address" value=""/>
-                            <textarea placeholder="Message"></textarea>
-
-                            <button class="send">Send Application</button>
-                        </form>
-                    </div>
-
-                </div>
-                <a href="#" class="button dark"><i class="fa fa-star"></i> Bookmark This Resume</a>
-
-
-            </div>
-        </div>
 
     </div>
 </div>

@@ -37,7 +37,7 @@
 		
 				<li><a href="#">For Candidates</a>
 					<ul>
-						<li><a href="?view=browse-jobs">Browse Jobs</a></li>
+						<li><a href="?view=browse-jobs">Browse Jobs</a></li>	
 						<li><a href="?view=add-resume">Add Resume</a></li>
 						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
 					</ul>
@@ -48,7 +48,6 @@
 					<ul>
 						<li><a href="?view=add-job">Add Job</a></li>
 						<li><a href="?view=manage-jobs">Manage Jobs</a></li>
-						<li><a href="?view=manage-applications">Manage Applications</a></li>
 						<li><a href="?view=browse-resumes">Browse Resumes</a></li>
 					</ul>
 				</li>
