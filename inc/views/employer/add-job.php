@@ -11,6 +11,19 @@
 </div>
 
 
+<script src="scripts/noty.min.js"></script>
+<script>
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+</script>
 <?php
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,7 +45,8 @@
 
         // echo $query; 
         $con->query("INSERT INTO jobs (`user_id`, `title`, `location`, `job_type`, `category`, `description`, `date_posted`, `closing_date`, `company`, `url`, `hours`, `rate`, `filled`) VALUES ('$user_id', '$title', '$location', '$job_type', '$category', '$description', '$date_posted', '$closing_date', '$company', '$url', '$hours', '$rate', '$filled') ");
- 
+        if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Add job successfully!');</script>";
+        else echo "<script>showNoty('error', 'Error! Add job failed!');</script>";
     }
     
     

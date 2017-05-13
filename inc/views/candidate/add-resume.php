@@ -10,8 +10,19 @@
     </div>
 </div>
 
-
-
+<script src="scripts/noty.min.js"></script>
+<script>
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+</script>
 <?php
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -42,13 +53,14 @@
             }
             else {
                 $link_img = "images/candidate/avatar-placeholder.png";
-            }   
+            }
             $sql = "INSERT INTO resumes (user_id, name, email, professional_title, location, content, url, education, experience, link_img, skills, date_posted) VALUES ($user_id, '$name', '$email', '$title', '$location', '$description', '$url', '$education', '$experience', '$link_img', '$skills', '$date_posted')";
             $con->query($sql);
+            if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Add resume successfully!');</script>";
+            else echo "<script>showNoty('error', 'Error! Add resume failed!');</script>";
         }
 
 ?>
-
 <!-- Content
 ================================================== -->
 <div class="container">

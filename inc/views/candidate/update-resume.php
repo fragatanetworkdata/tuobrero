@@ -12,10 +12,21 @@
 
 
 
+<script src="scripts/noty.min.js"></script>
+<script>
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+</script>
 <?php
     $resume_id = $_GET['resume_id'];
-    $result = $con->query("SELECT * from resumes where resume_id='$resume_id' and user_id = $_SESSION[user_id]");
-    $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $user_id = $_SESSION['user_id'];
@@ -41,7 +52,11 @@
 
 //         echo $sql;
         $con->query($sql);
+        if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Update resume successfully!');</script>";
+        else echo "<script>showNoty('error', 'Error! Update resume failed!');</script>";
     }
+    $result = $con->query("SELECT * from resumes where resume_id='$resume_id' and user_id = $_SESSION[user_id]");
+    $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 ?>
 

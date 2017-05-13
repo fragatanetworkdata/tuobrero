@@ -67,24 +67,58 @@
 
 </div>
 <!-- delete job-->
+<script src="scripts/noty.min.js"></script>
 <script>
     $(document).ready(function(){
         $(".delete").click(function(){
-            href_del = $(this).parent().children('a:first-child').attr('href');
-            job_id = href_del.substr(href_del.lastIndexOf('job_id=')+7);
-            job_del_ele = $(this).parents('tr');
-            $.ajax({
-                url:"inc/views/employer/del-job.php",
-                type:"post",
-                dataType:"text",
-                data:{del:job_id},
-                success:function(res){
-//                    console.log(res);
-                    if(res=='success') job_del_ele.remove();
+            _this = $(this);
+            var delete_actions = function() {
+                href_del = _this.parent().children('a:first-child').attr('href');
+                job_id = href_del.substr(href_del.lastIndexOf('job_id=') + 7);
+                job_del_ele = _this.parents('tr');
+                $.ajax({
+                    url: "inc/views/employer/del-job.php",
+                    type: "post",
+                    dataType: "text",
+                    data: {del: job_id},
+                    success: function (res) {
+//                        console.log(res);
+                        if (res == 'success') {job_del_ele.remove();showNoty('success', 'Delete job successfully!');}
+                        else showNoty('error', 'Delete job failed!');
+                    }
+                });
+            };
 
-                }
-            });
-
+            showNotyConfirm(delete_actions);
         });
     });
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+    function showNotyConfirm(delete_actions){
+        var n = new Noty({
+            text: '<div align="center" style="padding:5px;font-size: 14px;">Do you want to continue?</div>',
+            theme    : 'relax',
+            layout  :'topCenter',
+            type:   'alert',
+            buttons: [
+                Noty.button('YES', 'button', function () {
+                    n.close();
+                    delete_actions();
+                }),
+
+                Noty.button('NO', 'button', function () {
+                    n.close();
+                })
+            ],
+            closeWith: ['click', 'button']
+        }).show();
+    }
 </script>

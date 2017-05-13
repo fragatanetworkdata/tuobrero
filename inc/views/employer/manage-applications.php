@@ -109,7 +109,7 @@
                                         </div>
 
                                         <div class="clearfix"></div>
-                                        <a href="javascript:void(0)" class="button margin-top-15">Save</a>
+                                        <a href="javascript:void(0)" class="button margin-top-15 update-application">Save</a>
                                         <a href="javascript:void(0)" class="button gray margin-top-15 delete-application">Delete this application</a>
 
                                     </div>
@@ -158,10 +158,11 @@
 
 
     </div>
+<script src="scripts/noty.min.js"></script>
 <script>
     $(document).ready(function(){
         arr=['no','one','two','three','four','five'];
-        $('.button.margin-top-15').click(function(){
+        $('.update-application').click(function(){
             application_status=$(this).parent().find('select').val();//get val app_sts
             star = $(this).parent().find('input[type=number]').val();//get val app_star
             application_id = $(this).parent().attr('data-placeholder');//get app_id
@@ -183,26 +184,63 @@
                             star_show.attr('data-placeholder',arr[star]);
                         }
                         if(application_status)  application_status_show.html('<i class="fa fa-file-text-o"></i> '+application_status);//change text app_sts
+                        showNoty('success', 'Update application successfully!');
                     }
+                    else showNoty('error', 'Error! Update application failed!');
 
                 }
             });
         });
         $('.delete-application').click(function(){
-            application_id = $(this).parent().attr('data-placeholder');
-            application_ele = $(this).parents('.application');
-            $.ajax({
-                url:"inc/views/employer/manage-application-ajax.php",
-                type:"post",
-                dataType:"text",
-                data:{del:application_id},
-                success:function(res){
-                    if(res=='success')  application_ele.remove();
+             _this = $(this);
+            var delete_actions = function() {
+                application_id = _this.parent().attr('data-placeholder');
+                application_ele = _this.parents('.application');
+                $.ajax({
+                    url: "inc/views/employer/manage-application-ajax.php",
+                    type: "post",
+                    dataType: "text",
+                    data: {del: application_id},
+                    success: function (res) {
+                        if (res == 'success')  {application_ele.remove();showNoty('success', 'Delete application successfully!');}
+                        else showNoty('error', 'Error! Delete application failed!');
 
 
-                }
-            });
+                    }
+                });
+            };
+            showNotyConfirm(delete_actions);
         });
 
     });
+
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+    function showNotyConfirm(delete_actions){
+        var n = new Noty({
+            text: '<div align="center" style="padding:5px;font-size: 14px;">Do you want to continue?</div>',
+            theme    : 'relax',
+            layout  :'topCenter',
+            type:   'alert',
+            buttons: [
+                Noty.button('YES', 'button', function () {
+                    n.close();
+                    delete_actions();
+                }),
+
+                Noty.button('NO', 'button', function () {
+                    n.close();
+                })
+            ],
+            closeWith: ['click', 'button']
+        }).show();
+    }
 </script>

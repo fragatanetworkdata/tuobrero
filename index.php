@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <title>Work Scout</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="css/customNoty.css">
+<link rel="stylesheet" href="css/noty.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/green.css" id="colors">
 <script src="scripts/jquery-2.1.3.min.js"></script>

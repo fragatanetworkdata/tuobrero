@@ -11,11 +11,22 @@
 </div>
 
 
+<script src="scripts/noty.min.js"></script>
+<script>
+    function showNoty(type,content){
+        new Noty({
+            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
+            layout   : 'topCenter',
+            theme    : 'mint',
+            type     : type,
+            timeout  : 2000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+</script>
 <?php
     
     $job_id = $_GET['job_id'];
-    $result = $con->query("SELECT * from jobs where job_id='$job_id'");
-    $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,11 +46,15 @@
 
         $query = "UPDATE jobs set user_id = '$user_id', title = '$title', location = '$location', job_type = '$job_type', category = '$category', description = '$description', date_posted = '$date_posted', closing_date = '$closing_date', company = '$company', url = '$url', hours = '$hours', rate = '$rate', filled = '$filled' where job_id='$job_id' ";
 
-        // echo $query; 
+        // echo $query;
         $con->query($query);
- 
+        if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Update job successfully!');</script>";
+        else echo "<script>showNoty('error', 'Error! Update job failed!');</script>";
+
     }
-    
+    $result = $con->query("SELECT * from jobs where job_id='$job_id'");
+    $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
     
 
 ?>
