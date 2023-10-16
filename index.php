@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Work Scout</title>
+<title>TuObrero.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/customNoty.css">
 <link rel="stylesheet" href="css/noty.css">
