@@ -15,7 +15,7 @@
 		<nav id="navigation" class="menu">
 			<ul id="responsive">
 
-				<li><a href="" id="current">Home</a>
+				<li><a href="" id="current">Inicio</a>
 				</li>
 
 				<li><a href="#">Pages</a>
@@ -35,20 +35,20 @@
 				<?php if($role === 0) : ?>
 
 		
-				<li><a href="#">For Candidates</a>
+				<li><a href="#">Para Candidatos</a>
 					<ul>
-						<li><a href="?view=browse-jobs">Browse Jobs</a></li>	
-						<li><a href="?view=add-resume">Add Resume</a></li>
-						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
+						<li><a href="?view=browse-jobs">Buscar empleos</a></li>	
+						<li><a href="?view=add-resume">Agregar Curriculum</a></li>
+						<li><a href="?view=manage-resumes">Administrar Curriculum</a></li>
 					</ul>
 				</li>
 				<?php elseif($role === 1)  : ?>
 
-				<li><a href="#">For Employers</a>
+				<li><a href="#">Para Empleadores</a>
 					<ul>
-						<li><a href="?view=add-job">Add Job</a></li>
-						<li><a href="?view=manage-jobs">Manage Jobs</a></li>
-						<li><a href="?view=browse-resumes">Browse Resumes</a></li>
+						<li><a href="?view=add-job">Agregar Empleo</a></li>
+						<li><a href="?view=manage-jobs">Administrar Empleo</a></li>
+						<li><a href="?view=browse-resumes">Buscar Curriculum</a></li>
 					</ul>
 				</li>
 				<?php endif; ?>
@@ -58,8 +58,8 @@
 			
 			<ul class="float-right">
 				<?php if(!isset($_SESSION['username'])) : ?>
-				<li><a href="?view=signup"><i class="fa fa-user"></i> Sign Up</a></li>
-				<li><a href="?view=login"><i class="fa fa-lock"></i> Log In</a></li>
+				<li><a href="?view=signup"><i class="fa fa-user"></i> Iniciar Sesión</a></li>
+				<li><a href="?view=login"><i class="fa fa-lock"></i> Registrarse </a></li>
 				<?php else: ?>
 				<li class="username"><a href=""><i class="fa fa-user"></i> Hi, <?php echo $_SESSION['username']; ?></a></li>
 				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Log Out</a></li>
@@ -70,7 +70,7 @@
 
 		<!-- Navigation -->
 		<div id="mobile-navigation">
-			<a href="#menu" class="menu-trigger"><i class="fa fa-reorder"></i> Menu</a>
+			<a href="#menu" class="menu-trigger"><i class="fa fa-reorder"></i> Menú</a>
 		</div>
 
 	</div>
