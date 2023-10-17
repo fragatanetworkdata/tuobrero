@@ -1,19 +1,15 @@
-<!-- Titlebar
-================================================== -->
+<!-- Titlebar -->
 <div id="titlebar" class="single submit-page">
     <div class="container">
-
         <div class="sixteen columns">
-            <h2><i class="fa fa-pencil"></i> Update Job</h2>
+            <h2><i class="fa fa-pencil"></i> Actualizar Trabajo</h2>
         </div>
-
     </div>
 </div>
 
-
 <script src="scripts/noty.min.js"></script>
 <script>
-    function showNoty(type,content){
+    function showNoty(type, content){
         new Noty({
             text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
             layout   : 'topCenter',
@@ -24,10 +20,9 @@
         }).show();
     }
 </script>
-<?php
-    
-    $job_id = $_GET['job_id'];
 
+<?php
+    $job_id = $_GET['job_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['user_id'];
@@ -36,7 +31,7 @@
         $job_type = $_POST['job_type'];
         $category = $_POST['category'];
         $description =  mysqli_real_escape_string($con, $_POST['description']);
-        $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');;
+        $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');
         $closing_date = $_POST['closing_date'];
         $company = $_POST['company'];
         $url = $_POST['url'];
@@ -44,120 +39,107 @@
         $rate = mysqli_real_escape_string($con, $_POST['rate']);
         $filled = 0;
 
-        $query = "UPDATE jobs set user_id = '$user_id', title = '$title', location = '$location', job_type = '$job_type', category = '$category', description = '$description', date_posted = '$date_posted', closing_date = '$closing_date', company = '$company', url = '$url', hours = '$hours', rate = '$rate', filled = '$filled' where job_id='$job_id' ";
+        $query = "UPDATE jobs SET user_id = '$user_id', title = '$title', location = '$location', job_type = '$job_type', category = '$category', description = '$description', date_posted = '$date_posted', closing_date = '$closing_date', company = '$company', url = '$url', hours = '$hours', rate = '$rate', filled = '$filled' WHERE job_id = '$job_id'";
 
-        // echo $query;
         $con->query($query);
-        if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Update job successfully!');</script>";
-        else echo "<script>showNoty('error', 'Error! Update job failed!');</script>";
 
+        if ($con->affected_rows > 0) {
+            echo "<script>showNoty('success', '¡Trabajo actualizado con éxito!');</script>";
+        } else {
+            echo "<script>showNoty('error', '¡Error! No se pudo actualizar el trabajo.');</script>";
+        }
     }
-    $result = $con->query("SELECT * from jobs where job_id='$job_id'");
+
+    $result = $con->query("SELECT * FROM jobs WHERE job_id = '$job_id'");
     $job = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-    
-
 ?>
 
-<!-- Content
-================================================== -->
+<!-- Contenido -->
 <div class="container">
-
-    <!-- Submit Page -->
+    <!-- Página de Envío -->
     <div class="sixteen columns">
         <div class="submit-page">
             <form method="post">
-                <!-- Title -->
+                <!-- Título del Trabajo -->
                 <div class="form">
-                    <h5>Job Title</h5>
+                    <h5>Título del Trabajo</h5>
                     <input name="title" class="search-field" type="text" placeholder="" value="<?php echo $job["title"] ?>"/>
                 </div>
 
-                <!-- Location -->
+                <!-- Ubicación -->
                 <div class="form">
-                    <h5>Location</h5>
-                    <input name="location" class="search-field" type="text" placeholder="e.g. London" value="<?php echo $job["location"] ?>"/>
-    <!--                 <p class="note">Leave this blank if the location is not important</p> -->
+                    <h5>Ubicación</h5>
+                    <input name="location" class="search-field" type="text" placeholder="Ejemplo: Madrid" value="<?php echo $job["location"] ?>"/>
                 </div>
 
-                <!-- Job Type -->
+                <!-- Tipo de Trabajo -->
                 <div class="form">
-                    <h5>Job Type</h5>
-                    <select name="job_type" data-placeholder="Full-Time" class="chosen-select-no-single" >
-                        <option <?php if($job["job_type"] == 'Full-Time'){ echo("selected"); }?> value="Full-Time">Full-Time</option>
-                        <option <?php if($job["job_type"] == 'Part-Time'){ echo("selected"); }?> value="Part-Time">Part-Time</option>
-                        <option <?php if($job["job_type"] == 'Internship'){ echo("selected"); }?> value="Internship">Internship</option>
-                        <option <?php if($job["job_type"] == 'Freelance'){ echo("selected"); }?> value="Freelance">Freelance</option>
+                    <h5>Tipo de Trabajo</h5>
+                    <select name="job_type" data-placeholder="Tiempo Completo" class="chosen-select-no-single">
+                        <option <?php if($job["job_type"] == 'Tiempo Completo') { echo("selected"); }?> value="Tiempo Completo">Tiempo Completo</option>
+                        <option <?php if($job["job_type"] == 'Medio Tiempo') { echo("selected"); }?> value="Medio Tiempo">Medio Tiempo</option>
+                        <option <?php if($job["job_type"] == 'Prácticas') { echo("selected"); }?> value="Prácticas">Prácticas</option>
+                        <option <?php if($job["job_type"] == 'Freelance') { echo("selected"); }?> value="Freelance">Freelance</option>
                     </select>
                 </div>
 
-
-                <!-- Choose Category -->
+                <!-- Elija la Categoría -->
                 <div class="form">
                     <div class="select">
-                        <h5>Category</h5>
-                        <select name="category" data-placeholder="Choose Categories" class="chosen-select">
-                            <option <?php if($job["category"] == 'Developer'){ echo("selected"); }?> value="Developer">Developer</option>
-                            <option <?php if($job["category"] == 'Designer'){ echo("selected"); }?> value="Designer">Designer</option>
-                            <option <?php if($job["category"] == 'Product Manager'){ echo("selected"); }?> value="Product Manager">Product Manager</option>
-                            <option <?php if($job["category"] == 'Marketing'){ echo("selected"); }?> value="Marketing">Marketing</option>
-                            <option <?php if($job["category"] == 'Sales'){ echo("selected"); }?> value="Sales">Sales</option>
+                        <h5>Categoría</h5>
+                        <select name="category" data-placeholder="Elige una Categoría" class="chosen-select">
+                            <option <?php if($job["category"] == 'Desarrollador') { echo("selected"); }?> value="Desarrollador">Desarrollador</option>
+                            <option <?php if($job["category"] == 'Diseñador') { echo("selected"); }?> value="Diseñador">Diseñador</option>
+                            <option <?php if($job["category"] == 'Gerente de Producto') { echo("selected"); }?> value="Gerente de Producto">Gerente de Producto</option>
+                            <option <?php if($job["category"] == 'Marketing') { echo("selected"); }?> value="Marketing">Marketing</option>
+                            <option <?php if($job["category"] == 'Ventas') { echo("selected"); }?> value="Ventas">Ventas</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Description -->
+                <!-- Descripción -->
                 <div class="form">
-                    <h5>Description</h5>
+                    <h5>Descripción</h5>
                     <textarea name="description" class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true">
                         <?php echo $job["description"] ?>
                     </textarea>
                 </div>
 
-                <!-- TClosing Date -->
+                <!-- Fecha de Cierre -->
                 <div class="form">
-                    <h5>Closing Date <span>(optional)</span></h5>
-                    <input name="closing_date" value="<?php echo $job["closing_date"] ?>" data-role="date" type="text" placeholder="yyyy-mm-dd">
-                    <p class="note">Deadline for new applicants.</p>
+                    <h5>Fecha de Cierre <span>(opcional)</span></h5>
+                    <input name="closing_date" value="<?php echo $job["closing_date"] ?>" data-role="date" type="text" placeholder="aaaa-mm-dd">
+                    <p class="note">Fecha límite para nuevos solicitantes.</p>
                 </div>
 
+                <!-- Detalles de la Compañía -->
+                <div class="divider"><h3>Detalles de la Compañía</h3></div>
 
-                <!-- Company Details -->
-                <div class="divider"><h3>Company Details</h3></div>
-
-                <!-- Company Name -->
+                <!-- Nombre de la Compañía -->
                 <div class="form">
-                    <h5>Company Name</h5>
-                    <input name="company" value="<?php echo $job["company"] ?>" type="text" placeholder="Enter the name of the company">
+                    <h5>Nombre de la Compañía</h5>
+                    <input name="company" value="<?php echo $job["company"] ?>" type="text" placeholder="Ingrese el nombre de la compañía">
                 </div>
 
-                <!-- Website -->
+                <!-- Sitio Web -->
                 <div class="form">
-                    <h5>Website <span>(optional)</span></h5>
-                    <input name="url" value="<?php echo $job["url"] ?>"  type="text" placeholder="http://">
-                </div>
-                
-
-                <div class="form">
-                    <h5>Hours</span></h5>
-                    <input name="hours" value="<?php echo $job["hours"] ?>" type="text" placeholder="40h / week">
+                    <h5>Sitio Web <span>(opcional)</span></h5>
+                    <input name="url" value="<?php echo $job["url"] ?>" type="text" placeholder="http://">
                 </div>
 
                 <div class="form">
-                    <h5>Rate</span></h5>
-                    <input name="rate" value="<?php echo $job["rate"] ?>" type="text" placeholder="$110K – $130K">
+                    <h5>Horas</h5>
+                    <input name="hours" value="<?php echo $job["hours"] ?>" type="text" placeholder="40h/semana">
                 </div>
 
-
-
+                <div class="form">
+                    <h5>Tarifa</h5>
+                    <input name="rate" value="<?php echo $job["rate"] ?>" type="text" placeholder="$110,000 - $130,000">
+                </div>
 
                 <div class="divider margin-top-0"></div>
-                <input type="submit" class="button big" name="login" value="Update" />
-                <!-- <a href="#" class="button big margin-top-5">Add <i class="fa fa-plus"></i></a> -->
-
+                <input type="submit" class="button big" name="login" value="Actualizar" />
             </form>
         </div>
     </div>
-
 </div>
-
