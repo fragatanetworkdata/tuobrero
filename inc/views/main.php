@@ -11,7 +11,7 @@
                 <!-- Form -->
                 <h2>Buscar empleo</h2>
                 <form action="?view=earch-jobs" method="POST">
-                    <input name="query" type="text" placeholder="job title, company name or location" value=""/>
+                    <input name="query" type="text" placeholder="puesto de trabajo, nombre de la empresa o ubicación" value=""/>
                     <button><i class="fa fa-search"></i></button>
                 </form>
                 
@@ -42,7 +42,7 @@
             <div class="icon-box rounded alt">
                 <i class="ln ln-icon-Folder-Add"></i>
                 <h4>Add Resume</h4>
-                <p>Pellentesque habitant morbi tristique senectus netus ante et malesuada fames ac turpis egestas maximus neque.</p>
+                <p>La búsqueda de trabajo es un proceso, no un evento. Tómate tu tiempo y no desesperes.</p>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             <div class="icon-box rounded alt">
                 <i class="ln ln-icon-Search-onCloud"></i>
                 <h4>Busqueda de trabajo</h4>
-                <p>Pellentesque habitant morbi tristique senectus netus ante et malesuada fames ac turpis egestas maximus neque.</p>
+                <p>Practica tus habilidades de entrevista para que puedas impresionar a los empleadores.</p>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
             <div class="icon-box rounded alt">
                 <i class="ln ln-icon-Business-ManWoman"></i>
                 <h4>Buscar Grupo</h4>
-                <p>Pellentesque habitant morbi tristique senectus netus ante et malesuada fames ac turpis egestas maximus neque.</p>
+                <p>No tengas miedo de pedir ayuda a tus contactos o a un profesional de la búsqueda de empleo.</p>
             </div>
         </div>
 
@@ -105,7 +105,7 @@
 
     <!-- Job Spotlight -->
     <div class="five columns">
-        <h3 class="margin-bottom-5">Job Spotlight</h3>
+        <h3 class="margin-bottom-5">Trabajo destacado</h3>
 
         <!-- Navigation -->
         <div class="showbiz-navigation">
