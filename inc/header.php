@@ -20,8 +20,8 @@
 
 				<li><a href="#">Pages</a>
 					<ul>
-						<li><a href="?view=job-page">Job Page</a></li>
-						<li><a href="?view=resume-page">Resume Page</a></li>
+						<li><a href="?view=job-page">Pagina de empleo</a></li>
+						<li><a href="?view=resume-page">Resumen</a></li>
 	
 					</ul>
 				</li>
@@ -58,11 +58,11 @@
 			
 			<ul class="float-right">
 				<?php if(!isset($_SESSION['username'])) : ?>
-				<li><a href="?view=signup"><i class="fa fa-user"></i> Iniciar Sesión</a></li>
-				<li><a href="?view=login"><i class="fa fa-lock"></i> Registrarse </a></li>
+				<li><a href="?view=signup"><i class="fa fa-user"></i> Registrarse</a></li>
+				<li><a href="?view=login"><i class="fa fa-lock"></i> Iniciar Sesión </a></li>
 				<?php else: ?>
 				<li class="username"><a href=""><i class="fa fa-user"></i> Hi, <?php echo $_SESSION['username']; ?></a></li>
-				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Log Out</a></li>
+				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Salir </a></li>
 				<?php endif; ?>
 			</ul>			
 
