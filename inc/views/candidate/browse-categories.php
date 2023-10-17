@@ -1,127 +1,125 @@
-<!-- Titlebar
+<!-- Barra de Título
 ================================================== -->
 <div id="titlebar" class="photo-bg" style="background-image: url('images/all-categories-photo.jpg');">
     <div class="container">
-        <div class="ten columns">
-            <h2>All Categories</h2>
+        <div class="diez columnas">
+            <h2>Todas las Categorías</h2>
         </div>
 
-        <div class="six columns">
-            <a href="add-job.html" class="button">Post a Job, It’s Free!</a>
+        <div class="seis columnas">
+            <a href="add-job.html" class="botón">Publicar un Trabajo, ¡Es Gratis!</a>
         </div>
 
     </div>
 </div>
 
 
-<!-- Content
+<!-- Contenido
 ================================================== -->
 <div id="categories">
-    <!-- Categories Group -->
+    <!-- Grupo de Categorías -->
     <div class="categories-group">
         <div class="container">
-            <div class="four columns"><h4>Web, Software & IT</h4></div>
-            <div class="four columns">
+            <div class="cuatro columnas"><h4>Web, Software e IT</h4></div>
+            <div class="cuatro columnas">
                 <ul>
                     <li><a href="#">PHP</a></li>
                     <li><a href="#">Android</a></li>
                     <li><a href="#">WordPress</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Developer</a></li>
+                    <li><a href="#">Diseño</a></li>
+                    <li><a href="#">Desarrollador</a></li>
                     <li><a href="#">iOS</a></li>
-                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Móvil</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
                     <li><a href="#">MySQL</a></li>
                     <li><a href="#">JavaScript</a></li>
                     <li><a href="#">Software</a></li>
-                    <li><a href="#">Website Design</a></li>
-                    <li><a href="#">Programming</a></li>
+                    <li><a href="#">Diseño de Sitios Web</a></li>
+                    <li><a href="#">Programación</a></li>
                     <li><a href="#">SEO</a></li>
                     <li><a href="#">Java</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
                     <li><a href="#">CSS</a></li>
                     <li><a href="#">HTML5</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">eCommerce</a></li>
+                    <li><a href="#">Desarrollo Web</a></li>
+                    <li><a href="#">Diseño Web</a></li>
+                    <li><a href="#">Comercio Electrónico</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Categories Group -->
-    <div class="categories-group">
+    <!-- Grupo de Categorías -->
+    <div class "categories-group">
         <div class="container">
-            <div class="four columns"><h4>Design, Art & Multimedia</h4></div>
-            <div class="four columns">
+            <div class="cuatro columnas"><h4>Diseño, Arte y Multimedia</h4></div>
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Logo Design</a></li>
-                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="#">Diseño</a></li>
+                    <li><a href="#">Diseño de Logotipos</a></li>
+                    <li><a href="#">Diseño Gráfico</a></li>
                     <li><a href="#">Video</a></li>
-                    <li><a href="#">Adnimation</a></li>
+                    <li><a href="#">Animación</a></li>
                     <li><a href="#">Adobe Photoshop</a></li>
-                    <li><a href="#">Illustration</a></li>
+                    <li><a href="#">Ilustración</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">Art</a></li>
+                    <li><a href="#">Arte</a></li>
                     <li><a href="#">3D</a></li>
                     <li><a href="#">Adobe Illustrator</a></li>
-                    <li><a href="#">Drawing</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Cartoon</a></li>
-                    <li><a href="#">Graphics</a></li>
+                    <li><a href="#">Dibujo</a></li>
+                    <li><a href="#">Diseño Web</a></li>
+                    <li><a href="#">Dibujos Animados</a></li>
+                    <li><a href="#">Gráficos</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">Fashion Design</a></li>
+                    <li><a href="#">Diseño de Moda</a></li>
                     <li><a href="#">WordPress</a></li>
-                    <li><a href="#">Editing</a></li>
-                    <li><a href="#">Writing</a></li>
-                    <li><a href="#">T-Shirt Design</a></li>
+                    <li><a href="#">Edición</a></li>
+                    <li><a href="#">Escritura</a></li>
+                    <li><a href="#">Diseño de Camisetas</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Categories Group -->
+    <!-- Grupo de Categorías -->
     <div class="categories-group">
         <div class="container">
-            <div class="four columns"><h4>Sales & Marketing</h4></div>
-            <div class="four columns">
+            <div class="cuatro columnas"><h4>Ventas y Marketing</h4></div>
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">Display Advertising</a></li>
-                    <li><a href="#">Email Marketing</a></li>
-                    <li><a href="#">Lead Generation</a></li>
-                    <li><a href="#">Market & Customer Research</a></li>
+                    <li><a href="#">Publicidad en Display</a></li>
+                    <li><a href="#">Marketing por Correo Electrónico</a></li>
+                    <li><a href="#">Generación de Leads</a></li>
+                    <li><a href="#">Investigación de Mercado y Clientes</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">Marketing Strategy</a></li>
-                    <li><a href="#">Public Relations</a></li>
-                    <li><a href="#">Telemarketing & Telesales</a></li>
-                    <li><a href="#">Other - Sales & Marketing</a></li>
+                    <li><a href="#">Estrategia de Marketing</a></li>
+                    <li><a href="#">Relaciones Públicas</a></li>
+                    <li><a href="#">Telemercadeo y Ventas Telefónicas</a></li>
+                    <li><a href="#">Otros - Ventas y Marketing</a></li>
                 </ul>
             </div>
-            <div class="four columns">
+            <div class="cuatro columnas">
                 <ul>
-                    <li><a href="#">SEM - Search Engine Marketing</a></li>
-                    <li><a href="#">SEO - Search Engine Optimization</a></li>
-                    <li><a href="#">SMM - Social Media Marketing</a></li>
+                    <li><a href="#">SEM - Marketing en Motores de Búsqueda</a></li>
+                    <li><a href="#">SEO - Optimización en Motores de Búsqueda</a></li>
+                    <li><a href="#">SMM - Marketing en Redes Sociales</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
 </div>
-
