@@ -1,77 +1,79 @@
-<!-- Cabecera
+<!-- Header
 ================================================== -->
+
+
 <header class="sticky-header">
-    <div class="container">
-        <div class="sixteen columns">
-        
-            <!-- Logo -->
-            <div id="logo">
-                <h1><a href="?"><img src="images/logo.png" alt="Trabajo Scout" /></a></h1>
-            </div>
+<div class="container">
+	<div class="sixteen columns">
+	
+		<!-- Logo -->
+		<div id="logo">
+			<h1><a href="?"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+		</div>
 
-            <!-- Menú -->
-            <nav id="navigation" class="menu">
-                <ul id="responsive">
+		<!-- Menu -->
+		<nav id="navigation" class="menu">
+			<ul id="responsive">
 
-                    <li><a href="" id="current">Inicio</a>
-                    </li>
+				<li><a href="" id="current">Home</a>
+				</li>
 
-                    <li><a href="#">Páginas</a>
-                        <ul>
-                            <li><a href="?view=pagina-empleo">Página de Empleo</a></li>
-                            <li><a href="?view=pagina-curriculum">Página de Currículum</a></li>
+				<li><a href="#">Pages</a>
+					<ul>
+						<li><a href="?view=job-page">Job Page</a></li>
+						<li><a href="?view=resume-page">Resume Page</a></li>
+	
+					</ul>
+				</li>
 
-                        </ul>
-                    </li>
+				<?php
+					session_start();
+					$role = isset($_SESSION['role']) ? $_SESSION['role'] : "visitor";
 
-                    <?php
-                        session_start();
-                        $role = isset($_SESSION['role']) ? $_SESSION['role'] : "visitante";
+				?>
 
-                    ?>
+				<?php if($role === 0) : ?>
 
-                    <?php if($role === 0) : ?>
+		
+				<li><a href="#">For Candidates</a>
+					<ul>
+						<li><a href="?view=browse-jobs">Browse Jobs</a></li>	
+						<li><a href="?view=add-resume">Add Resume</a></li>
+						<li><a href="?view=manage-resumes">Manage Resumes</a></li>
+					</ul>
+				</li>
+				<?php elseif($role === 1)  : ?>
 
-            
-                    <li><a href="#">Para Candidatos</a>
-                        <ul>
-                            <li><a href="?view=explorar-empleos">Explorar Empleos</a>    
-                            <li><a href="?view=agregar-curriculum">Agregar Currículum</a>
-                            <li><a href="?view=administrar-curriculums">Administrar Currículums</a>
-                        </ul>
-                    </li>
-                    <?php elseif($role === 1)  : ?>
+				<li><a href="#">For Employers</a>
+					<ul>
+						<li><a href="?view=add-job">Add Job</a></li>
+						<li><a href="?view=manage-jobs">Manage Jobs</a></li>
+						<li><a href="?view=browse-resumes">Browse Resumes</a></li>
+					</ul>
+				</li>
+				<?php endif; ?>
 
-                    <li><a href="#">Para Empleadores</a>
-                        <ul>
-                            <li><a href="?view=agregar-empleo">Agregar Empleo</a>
-                            <li><a href="?view=administrar-empleos">Administrar Empleos</a>
-                            <li><a href="?view=explorar-curriculums">Explorar Currículums</a>
-                        </ul>
-                    </li>
-                    <?php endif; ?>
+			</ul>
+	
+			
+			<ul class="float-right">
+				<?php if(!isset($_SESSION['username'])) : ?>
+				<li><a href="?view=signup"><i class="fa fa-user"></i> Sign Up</a></li>
+				<li><a href="?view=login"><i class="fa fa-lock"></i> Log In</a></li>
+				<?php else: ?>
+				<li class="username"><a href=""><i class="fa fa-user"></i> Hi, <?php echo $_SESSION['username']; ?></a></li>
+				<li><a href="func/logout.php"><i class="fa fa-lock"></i> Log Out</a></li>
+				<?php endif; ?>
+			</ul>			
 
-                </ul>
+		</nav>
 
-                
-                <ul class="float-right">
-                    <?php if(!isset($_SESSION['username'])) : ?>
-                    <li><a href="?view=registro"><i class="fa fa-user"></i> Registrarse</a></li>
-                    <li><a href="?view=iniciar-sesion"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
-                    <?php else: ?>
-                    <li class="username"><a href=""><i class="fa fa-user"></i> Hola, <?php echo $_SESSION['username']; ?></a></li>
-                    <li><a href="func/logout.php"><i class="fa fa-lock"></i> Cerrar Sesión</a></li>
-                    <?php endif; ?>
-                </ul>            
+		<!-- Navigation -->
+		<div id="mobile-navigation">
+			<a href="#menu" class="menu-trigger"><i class="fa fa-reorder"></i> Menu</a>
+		</div>
 
-            </nav>
-
-            <!-- Navegación Móvil -->
-            <div id="mobile-navigation">
-                <a href="#menu" class="menu-trigger"><i class="fa fa-reorder"></i> Menú</a>
-            </div>
-
-        </div>
-    </div>
+	</div>
+</div>
 </header>
 <div class="clearfix"></div>
