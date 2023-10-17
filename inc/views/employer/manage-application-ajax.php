@@ -4,19 +4,34 @@
         include_once("../../../func/sql.php");
         $application_status = $_REQUEST['application_status'];
         $rank = $_REQUEST['rank'];
-//        echo $application_id,'  ',$application_status,'   ',$rank;
-        $sql = "update applications set rank = '$rank', application_status = '$application_status' where application_id = '$application_id'";
-        if(empty($application_status)) $sql = "update applications set rank = '$rank' where application_id = '$application_id'";
-        else if(empty($rank)) $sql = "update applications set application_status = '$application_status' where application_id = '$application_id'";
+
+        // Actualizar la solicitud de trabajo
+        $sql = "UPDATE applications SET rank = '$rank', application_status = '$application_status' WHERE application_id = '$application_id'";
+        
+        if(empty($application_status)) {
+            $sql = "UPDATE applications SET rank = '$rank' WHERE application_id = '$application_id'";
+        } else if(empty($rank)) {
+            $sql = "UPDATE applications SET application_status = '$application_status' WHERE application_id = '$application_id'";
+        }
+        
         $con->query($sql);
-        if(($con->affected_rows)>0) echo "success";
-        else echo "error";
+        
+        if(($con->affected_rows) > 0) {
+            echo "éxito";
+        } else {
+            echo "error";
+        }
     }
+
     if(isset($_REQUEST['del'])){
         $application_id = $_REQUEST['del'];
         include_once("../../../func/sql.php");
-        $con->query("delete from applications where application_id = '$application_id'");
-        if(($con->affected_rows)>0) echo "success";
-        else echo "error";
+        $con->query("DELETE FROM applications WHERE application_id = '$application_id'");
+        
+        if(($con->affected_rows) > 0) {
+            echo "éxito";
+        } else {
+            echo "error";
+        }
     }
 ?>
