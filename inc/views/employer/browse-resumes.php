@@ -1,13 +1,13 @@
-<!-- Titlebar
+<!-- Barra de Título
 ================================================== -->
 <div id="titlebar">
     <div class="container">
         <div class="ten columns">
-            <h2>All resumes </h2>
+            <h2>Todos los currículums </h2>
         </div>
 
         <div class="six columns">
-            <a href="?view=add-resume" class="button">Post a Resume, It’s Free!</a>
+            <a href="?view=add-resume" class="button">Publica un Currículum, ¡Es Gratis!</a>
         </div>
 
     </div>
@@ -18,16 +18,16 @@
 ?>
 
 
-<!-- Content
+<!-- Contenido
 ================================================== -->
 <div class="container">
-    <!-- Recent Jobs -->
+    <!-- Currículums Recientes -->
     <div class="eleven columns">
         <div class="padding-right">
 
             <form action="?view=search-resumes" method="post" class="list-search">
                 <button><i class="fa fa-search"></i></button>
-                <input name="query" type="text" placeholder="Search resumes . . ." value=""/>
+                <input name="query" type="text" placeholder="Buscar currículums . . ." value=""/>
                 <div class="clearfix"></div>
             </form>
 
@@ -76,14 +76,12 @@
 
                 <nav class="pagination-next-prev">
                     <ul>
-                        <li><a href="#" class="prev">Previous</a></li>
-                        <li><a href="#" class="next">Next</a></li>
+                        <li><a href="#" class="prev">Anterior</a></li>
+                        <li><a href="#" class="next">Siguiente</a></li>
                     </ul>
                 </nav>
             </div>
 
         </div>
     </div>
-
-
 </div>
