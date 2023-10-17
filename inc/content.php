@@ -2,35 +2,37 @@
 	$temp = isset($_GET['view']) ? $_GET['view'] : '';
 	
 	switch ($temp) {
-		case 'agregar-empleo':
-		case 'gestionar-empleos':
-		case 'actualizar-empleo':
-		case 'ver-curriculums':
-		case 'buscar-curriculums':
-		case 'gestionar-solicitudes':
-			include("views/empleador/$temp.php");
+		case 'add-job':
+		case 'manage-jobs':
+		case 'update-job':
+		case 'browse-resumes':
+		case 'search-resumes':
+		case 'manage-applications':
+			include("views/employer/$temp.php");
 			break;
-		case 'agregar-curriculum':
-		case 'ver-categorias':
-		case 'ver-empleos':
-		case 'buscar-empleos':
-		case 'gestionar-curriculums':
-		case 'actualizar-curriculum':
-			include("views/candidato/$temp.php");
+		case 'add-resume':
+		case 'browse-categories':
+		case 'browse-jobs':
+		case 'search-jobs':
+		case 'manage-resumes':
+		case 'update-resume':
+			include("views/candidate/$temp.php");
 			break;
-		case 'pagina-de-empleo':
-		case 'pagina-de-curriculum':
-		case 'tablas-de-precios':
+		case 'job-page':
+		case 'resume-page':
+		case 'pricing-tables':
 		case 'shortcodes':
-		case 'contacto':
-			include("views/pagina/$temp.php");
+		case 'contact':
+			include("views/page/$temp.php");
 			break;
-		case 'iniciar-sesion':
-		case 'registrarse':
-			include("views/cuenta/$temp.php");
+		case 'login':
+		case 'signup':
+			include("views/account/$temp.php");
 			break;			
 		default:
-			include("views/principal.php");
+			include("views/main.php");
 			break;
 	}
+
+
 ?>
