@@ -1,26 +1,25 @@
-<!-- Titlebar
+<!-- Barra de Título
 ================================================== -->
 <div id="titlebar" class="single submit-page">
     <div class="container">
 
         <div class="sixteen columns">
-            <h2><i class="fa fa-plus-circle"></i> Edit Resume</h2>
+            <h2><i class="fa fa-plus-circle"></i> Editar Currículum</h2>
         </div>
 
     </div>
 </div>
 
 
-
 <script src="scripts/noty.min.js"></script>
 <script>
-    function showNoty(type,content){
+    function showNoty(type, content) {
         new Noty({
-            text     : "<div align='center' style='padding:10px;font-size: 14px;'>"+content+"</div>",
-            layout   : 'topCenter',
-            theme    : 'mint',
-            type     : type,
-            timeout  : 2000,
+            text: "<div align='center' style='padding:10px;font-size: 14px;'>" + content + "</div>",
+            layout: 'topCenter',
+            theme: 'mint',
+            type: type,
+            timeout: 2000,
             closeWith: ['click', 'button']
         }).show();
     }
@@ -28,7 +27,7 @@
 <?php
     $resume_id = $_GET['resume_id'];
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['user_id'];
         $name = $_POST['name'];
         $email = $_POST['email'];
@@ -42,7 +41,7 @@
         $date_posted = date_format(new DateTime(), 'Y-m-d H:i:s');
 
         if (!empty($_FILES["image"]['tmp_name'])) {
-            $image = $user_id.'_'.$_FILES["image"]['name'];
+            $image = $user_id . '_' . $_FILES["image"]['name'];
             $image_tmp = $_FILES["image"]['tmp_name'];
             move_uploaded_file($image_tmp, "images/candidate/" . $image);
             $link_img = "images/candidate/" . $image;
@@ -52,103 +51,96 @@
 
 //         echo $sql;
         $con->query($sql);
-        if(($con->affected_rows)>0) echo "<script>showNoty('success', 'Update resume successfully!');</script>";
-        else echo "<script>showNoty('error', 'Error! Update resume failed!');</script>";
+        if (($con->affected_rows) > 0) echo "<script>showNoty('success', 'Currículum actualizado exitosamente!');</script>";
+        else echo "<script>showNoty('error', '¡Error! Fallo al actualizar el currículum!');</script>";
     }
     $result = $con->query("SELECT * from resumes where resume_id='$resume_id' and user_id = $_SESSION[user_id]");
     $resume = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 ?>
 
-<!-- Content
+<!-- Contenido
 ================================================== -->
 <div class="container">
 
-    <!-- Submit Page -->
+    <!-- Página de Envío -->
     <div class="sixteen columns">
         <div class="submit-page">
 
             <form method="post" enctype="multipart/form-data">
-                <!-- Name -->
+                <!-- Nombre -->
                 <div class="form">
-                    <h5>Your Name</h5>
-                    <input name="name" class="search-field" type="text" placeholder="Your full name" value="<?php echo $resume['name'] ?>"/>
+                    <h5>Tu Nombre</h5>
+                    <input name="name" class="search-field" type="text" placeholder="Tu nombre completo" value="<?php echo $resume['name'] ?>" />
                 </div>
 
-                <!-- Email -->
+                <!-- Correo Electrónico -->
                 <div class="form">
-                    <h5>Your Email</h5>
-                    <input name="email" class="search-field" type="text" placeholder="mail@example.com" value="<?php echo $resume['email'] ?>"/>
+                    <h5>Tu Correo Electrónico</h5>
+                    <input name="email" class="search-field" type="text" placeholder="correo@example.com" value="<?php echo $resume['email'] ?>" />
                 </div>
 
-                <!-- Title -->
+                <!-- Título Profesional -->
                 <div class="form">
-                    <h5>Professional Title</h5>
-                    <input name="title" class="search-field" type="text" placeholder="e.g. Web Developer" value="<?php echo $resume['professional_title'] ?>"/>
+                    <h5>Título Profesional</h5>
+                    <input name="title" class="search-field" type="text" placeholder="p. ej. Desarrollador Web" value="<?php echo $resume['professional_title'] ?>" />
                 </div>
 
-                <!-- Location -->
+                <!-- Ubicación -->
                 <div class="form">
-                    <h5>Location</h5>
-                    <input name="location" class="search-field" type="text" placeholder="e.g. London, UK" value="<?php echo $resume['location'] ?>"/>
+                    <h5>Ubicación</h5>
+                    <input name="location" class="search-field" type="text" placeholder="p. ej. Londres, Reino Unido" value="<?php echo $resume['location'] ?>" />
                 </div>
 
-                <!-- Logo -->
+                <!-- Foto -->
                 <div class="form">
-                    <h5>Photo <span>(optional)</span></h5>
+                    <h5>Foto <span>(opcional)</span></h5>
                     <label class="upload-btn">
-                        <input name="image" type="file" accept="image/*"/>
-                        <i class="fa fa-upload"></i> Browse
+                        <input name="image" type="file" accept="image/*" />
+                        <i class="fa fa-upload"></i> Examinar
                     </label>
-                    <span class="fake-input">No file selected</span>
-                    <span><img src="<?php echo $resume['link_img']?>" style="width: 100px;height: 100px;" alt=""></span>
+                    <span class="fake-input">Ningún archivo seleccionado</span>
+                    <span><img src="<?php echo $resume['link_img'] ?>" style="width: 100px; height: 100px;" alt=""></span>
                 </div>
 
-                <!-- Description -->
+                <!-- Descripción -->
                 <div class="form">
-                    <h5>Resume Content</h5>
+                    <h5>Contenido del Currículum</h5>
                     <textarea name="description" class="WYSIWYG" cols="40" rows="3" id="summary" spellcheck="true"><?php echo $resume['content'] ?></textarea>
                 </div>
 
-
-                <!-- Add URL -->
+                <!-- Agregar URL -->
                 <div class="form with-line">
-                    <h5>URL <span>(optional)</span></h5>
-                    <input name="url" class="search-field" type="text" placeholder="e.g. example.com" value="<?php echo $resume['url'] ?>"/>
+                    <h5>URL <span>(opcional)</span></h5>
+                    <input name="url" class="search-field" type="text" placeholder="p. ej. ejemplo.com" value="<?php echo $resume['url'] ?>" />
                 </div>
 
-
-                <!-- Education -->
+                <!-- Educación -->
                 <div class="form">
-                    <h5>Education <span>(optional)</span></h5>
-
-                        <!-- Add Education -->
-                            <textarea name="education" class="search-field" placeholder="School Name" cols="30" rows="5"><?php echo $resume['education'] ?></textarea>
-
+                    <h5>Educación <span>(opcional)</span></h5>
+                    <!-- Agregar Educación -->
+                    <textarea name="education" class="search-field" placeholder="Nombre de la Escuela" cols="30" rows="5"><?php echo $resume['education'] ?></textarea>
                 </div>
 
-
-                <!-- Experience  -->
+                <!-- Experiencia -->
                 <div class="form with-line">
-                    <h5>Experience <span>(optional)</span></h5>
+                    <h5>Experiencia <span>(opcional)</span></h5>
                     <div class="form-inside">
-
-                        <!-- Add Experience -->
-                            <textarea name="experience" class="search-field" placeholder="Employer" cols="30" rows="5"><?php echo $resume['experience'] ?></textarea>
-
+                        <!-- Agregar Experiencia -->
+                        <textarea name="experience" class="search-field" placeholder="Empleador" cols="30" rows="5"><?php echo $resume['experience'] ?></textarea>
                     </div>
                 </div>
-                
-                    <!-- Skills -->
+
+                <!-- Habilidades -->
                 <div class="form">
-                    <h5>Skills </span></h5>
-                    <input name="skills" class="search-field" type="text" placeholder="e.g. PHP, Social Media, Management" value="<?php echo $resume['skills'] ?>"/>
-                    <p class="note">Comma separate tags, such as required skills or technologies, for this job.</p>
+                    <h5>Habilidades </span></h5>
+                    <input name="skills" class="search-field" type="text" placeholder="p. ej. PHP, Redes Sociales, Gestión" value="<?php echo $resume['skills'] ?>" />
+                    <p class="note">Separa las etiquetas con comas, como habilidades o tecnologías requeridas para este trabajo.</p>
                 </div>
 
                 <div class="divider margin-top-0 padding-reset"></div>
-<!--                <a href="#" class="button big margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>-->
-                <input type="submit" class="button big" name="login" value="Edit Resume" />
+                <!-- <a href="#" class="button big margin-top-5">Vista Previa <i class="fa fa-arrow-circle-right"></i></a> -->
+                <input type="submit" class="button big" name="login" value="Editar Currículum" />
             </form>
         </div>
     </div>
@@ -164,8 +156,8 @@
              if (lastIndex >= 0) {
                  filename = filename.substring(lastIndex + 1);
               }
-            if (filename!="") $(".fake-input").html(filename);
-            else $(".fake-input").html('No file selected');
+            if (filename != "") $(".fake-input").html(filename);
+            else $(".fake-input").html('Ningún archivo seleccionado');
         });
     });
 </script>
