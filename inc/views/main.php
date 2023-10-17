@@ -1,5 +1,3 @@
-
-
 <!-- Banner
 ================================================== -->
 <div id="banner" style="background-image: url(images/banner-home-01.jpg)" class="parallax background" data-img-width="2000" data-img-height="1330" data-diff="400">
@@ -15,12 +13,9 @@
                     <button><i class="fa fa-search"></i></button>
                 </form>
                 
-
-
-                
-                <!-- Announce -->
+                <!-- Anuncio -->
                 <div class="announce">
-                   Tenemos Varias ofertas para tí
+                   Tenemos Varias ofertas para ti.
                 </div>
 
             </div>
@@ -29,139 +24,109 @@
     </div>
 </div>
 
-
-
-<!-- Content
+<!-- Contenido
 ================================================== -->
 
-<!-- Icon Boxes -->
+<!-- Cuadros de Iconos -->
 <div class="section-background top-0">
-    <div class="container">
-
+    <div
+        class="container"
+    >
         <div class="one-third column">
             <div class="icon-box rounded alt">
                 <i class="ln ln-icon-Folder-Add"></i>
-                <h4>Add Resume</h4>
+                <h4>Añadir Currículum</h4>
                 <p>La búsqueda de trabajo es un proceso, no un evento. Tómate tu tiempo y no desesperes.</p>
             </div>
         </div>
-
         <div class="one-third column">
             <div class="icon-box rounded alt">
                 <i class="ln ln-icon-Search-onCloud"></i>
-                <h4>Busqueda de trabajo</h4>
+                <h4>Búsqueda de Trabajo</h4>
                 <p>Practica tus habilidades de entrevista para que puedas impresionar a los empleadores.</p>
             </div>
         </div>
-
         <div class="one-third column">
-            <div class="icon-box rounded alt">
+            <div class "icon-box rounded alt">
                 <i class="ln ln-icon-Business-ManWoman"></i>
                 <h4>Buscar Grupo</h4>
                 <p>No tengas miedo de pedir ayuda a tus contactos o a un profesional de la búsqueda de empleo.</p>
             </div>
         </div>
-
     </div>
 </div>
-<!-- Icon Boxes / End -->
-
+<!-- Cuadros de Iconos / Fin -->
 
 <div class="container">
-    
-    <!-- Recent Jobs -->
+    <!-- Trabajos Recientes -->
     <div class="eleven columns">
-    <div class="padding-right">
-        <h3 class="margin-bottom-25">trabajos recientes</h3>
-        <ul class="job-list">
+        <div class="padding-right">
+            <h3 class="margin-bottom-25">Trabajos Recientes</h3>
+            <ul class="job-list">
+                <?php
+                $result = $con->query("SELECT * from jobs order by date_posted desc limit 5");
 
-            <?php
-            $result = $con->query("SELECT * from jobs order by date_posted desc limit 5");
-
-            while($row = $result->fetch_assoc()) {
-                echo '<li><a href="?view=job-page&job_id='.$row['job_id'].'">
-                    <img src="http://www.vasterad.com/themes/workscout/images/job-list-logo-05.png" alt="">
-                    <div class="job-list-content">
-                        <h4>'.$row['title'].' <span class="'.$row['job_type'].'">'.$row['job_type'].'</span></h4>
-                        <div class="job-icons">
-                            <span><i class="fa fa-briefcase"></i> '.$row['company'].'</span>
-                            <span><i class="fa fa-map-marker"></i> '.$row['location'].'</span>
-                            <span><i class="fa fa-money"></i> '.$row['rate'].'</span>
+                while($row = $result->fetch_assoc()) {
+                    echo '<li><a href="?view=job-page&job_id='.$row['job_id'].'">
+                        <img src="http://www.vasterad.com/themes/workscout/images/job-list-logo-05.png" alt="">
+                        <div class="job-list-content">
+                            <h4>'.$row['title'].' <span class="'.$row['job_type'].'">'.$row['job_type'].'</span></h4>
+                            <div class="job-icons">
+                                <span><i class="fa fa-briefcase"></i> '.$row['company'].'</span>
+                                <span><i class="fa fa-map-marker"></i> '.$row['location'].'</span>
+                                <span><i class="fa fa-money"></i> '.$row['rate'].'</span>
+                            </div>
                         </div>
-                        
-                    </div>
                     </a>
                     <div class="clearfix"></div>
                 </li>';
-            }
-
-            ?>   
-        </ul>
-
-        <a href="?view=browse-jobs" class="button centered"><i class="fa fa-plus-circle"></i> Mas trabajos</a>
-        <div class="margin-bottom-55"></div>
+                }
+                ?>   
+            </ul>
+            <a href="?view=browse-jobs" class="button centered"><i class="fa fa-plus-circle"></i> Más Trabajos</a>
+            <div class="margin-bottom-55"></div>
+        </div>
     </div>
-    </div>
-
-    <!-- Job Spotlight -->
+    <!-- Destacado de Trabajo -->
     <div class="five columns">
-        <h3 class="margin-bottom-5">Trabajo destacado</h3>
+        <h3 class="margin-bottom-5">Trabajo Destacado</h3>
 
-        <!-- Navigation -->
+        <!-- Navegación -->
         <div class="showbiz-navigation">
             <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
             <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
         </div>
         <div class="clearfix"></div>
         
-        <!-- Showbiz Container -->
+        <!-- Contenedor de Showbiz -->
         <div id="job-spotlight" class="showbiz-container">
             <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
                 <div class="overflowholder">
-
                     <ul>
-
                         <li>
                             <div class="job-spotlight">
-                                <a href="#"><h4>Social Media: Advertising Coordinator <span class="part-time">Part-Time</span></h4></a>
+                                <a href="#"><h4>Coordinador de Publicidad en Redes Sociales <span class="part-time">Medio Tiempo</span></h4></a>
                                 <span><i class="fa fa-briefcase"></i> Mates</span>
-                                <span><i class="fa fa-map-marker"></i> New York</span>
-                                <span><i class="fa fa-money"></i> $20 / hour</span>
-                                <p>As advertising & content coordinator, you will support our social media team in producing high quality social content for a range of media channels.</p>
-                                <a href="job-page.html" class="button">Apply For This Job</a>
+                                <span><i class="fa fa-map-marker"></i> Nueva York</span>
+                                <span><i class="fa fa-money"></i> $20 / hora</span>
+                                <p>Como coordinador de publicidad y contenido, apoyarás a nuestro equipo de redes sociales en la producción de contenido social de alta calidad para una variedad de canales de medios.</p>
+                                <a href="job-page.html" class="button">Solicitar Este Trabajo</a>
                             </div>
                         </li>
-
                         <li>
                             <div class="job-spotlight">
-                                <a href="#"><h4>Prestashop / WooCommerce Product Listing <span class="freelance">Freelance</span></h4></a>
+                                <a href="#"><h4>Listado de Productos Prestashop / WooCommerce <span class="freelance">Trabajo Independiente</span></h4></a>
                                 <span><i class="fa fa-briefcase"></i> King</span>
-                                <span><i class="fa fa-map-marker"></i> London</span>
-                                <span><i class="fa fa-money"></i> $25 / hour</span>
+                                <span><i class="fa fa-map-marker"></i> Londres</span>
+                                <span><i class="fa fa-money"></i> $25 / hora</span>
                                 <p>Etiam suscipit tellus ante, sit amet hendrerit magna varius in. Pellentesque lorem quis enim venenatis pellentesque.</p>
-                                <a href="job-page.html" class="button">Apply For This Job</a>
+                                <a href="job-page.html" class="button">Solicitar Este Trabajo</a>
                             </div>
                         </li>
-
                         <li>
                             <div class="job-spotlight">
-                                <a href="#"><h4>Logo Design <span class="freelance">Freelance</span></h4></a>
+                                <a href="#"><h4>Diseño de Logotipo <span class="freelance">Trabajo Independiente</span></h4></a>
                                 <span><i class="fa fa-briefcase"></i> Hexagon</span>
-                                <span><i class="fa fa-map-marker"></i> Sydney</span>
-                                <span><i class="fa fa-money"></i> $10 / hour</span>
-                                <p>Proin ligula neque, pretium et ipsum eget, mattis commodo dolor. Etiam tincidunt libero quis commodo.</p>
-                                <a href="job-page.html" class="button">Apply For This Job</a>
-                            </div>
-                        </li>
-
-
-                    </ul>
-                    <div class="clearfix"></div>
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
-    </div>
-</div>
+                                <span><i class="fa fa-map-marker"></i> Sídney</span>
+                                <span><i class="fa fa-money"></i> $10 / hora</span>
+                                <p>Proin ligula ne
