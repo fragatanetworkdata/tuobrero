@@ -1,5 +1,3 @@
-
-
 <!-- Footer
 ================================================== -->
 <div class="margin-top-15"></div>
@@ -9,44 +7,40 @@
 	<div class="container">
 
 		<div class="seven columns">
-			<h4>About</h4>
-			<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-			<a href="#" class="button">Get Started</a>
+			<h4>Acerca de</h4>
+			<p>Ofrecemos mano de obra en los hermosos departamentos de Boyacá y el Valle de Tenza. Contamos con profesionales capacitados para tus necesidades laborales. ¡Contáctanos hoy mismo!</p>
+			<a href="#" class="button">Comenzar</a>
 		</div>
 
 		<div class="three columns">
-			<h4>Company</h4>
+			<h4>Compañía</h4>
 			<ul class="footer-links">
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Careers</a></li>
-				<li><a href="#">Our Blog</a></li>
-				<li><a href="#">Terms of Service</a></li>
-				<li><a href="#">Privacy Policy</a></li>
-				<li><a href="#">Hiring Hub</a></li>
+				<li><a href="#">Sobre Nosotros</a></li>
+				<li><a href="#">Trabajos Disponibles</a></li>
+				<li><a href="#">Nuestro Blog</a></li>
+				<li><a href="#">Términos de Servicio</a></li>
+				<li><a href="#">Política de Privacidad</a></li>
+				<li><a href="#">Contacto</a></li>
 			</ul>
 		</div>
 		
 		<div class="three columns">
-			<h4>Press</h4>
-			<ul class="footer-links">
-				<li><a href="#">In the News</a></li>
-				<li><a href="#">Press Releases</a></li>
-				<li><a href="#">Awards</a></li>
-				<li><a href="#">Testimonials</a></li>
-				<li><a href="#">Timeline</a></li>
+			<h4>Contacto</h4>
+			<ul class "footer-links">
+				<li><a href="#">Contáctanos</a></li>
+				<li><a href="#">Soporte</a></li>
+				<li><a href="#">Preguntas Frecuentes</a></li>
 			</ul>
 		</div>		
 
 		<div class="three columns">
-			<h4>Browse</h4>
-			<ul class="footer-links">
-				<li><a href="#">Freelancers by Category</a></li>
-				<li><a href="#">Freelancers in USA</a></li>
-				<li><a href="#">Freelancers in UK</a></li>
-				<li><a href="#">Freelancers in Canada</a></li>
-				<li><a href="#">Freelancers in Australia</a></li>
-				<li><a href="#">Find Jobs</a></li>
-
+			<h4>Explorar</h4>
+			<ul class "footer-links">
+				<li><a href="#">Servicios por Categoría</a></li>
+				<li><a href="#">Trabajadores en Colombia</a></li>
+				<li><a href="#">Trabajadores en Boyacá</a></li>
+				<li><a href="#">Trabajadores en Valle de Tenza</a></li>
+				<li><a href="#">Ver Ofertas de Empleo</a></li>
 			</ul>
 		</div>
 
@@ -54,21 +48,21 @@
 
 	<!-- Bottom -->
 	<div class="container">
-		<div class="footer-bottom">
-			<div class="sixteen columns">
-				<h4>Follow Us</h4>
+		<div class "footer-bottom">
+			<div class "sixteen columns">
+				<h4>Síguenos</h4>
 				<ul class="social-icons">
 					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
 					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
 					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
 				</ul>
-				<div class="copyrights">©  Copyright 2017 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
+				<div class "copyrights">© Derechos de Autor 2023 por <a href="#">TuObreo.com</a>. Todos los Derechos Reservados.</div>
 			</div>
 		</div>
 	</div>
 
 </div>
 
-<!-- Back To Top Button -->
+<!-- Botón para Volver Arriba -->
 <div id="backtotop"><a href="#"></a></div>
